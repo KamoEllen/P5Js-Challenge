@@ -20,10 +20,25 @@ function draw() {
         {
          drops[i].show();  
          drops[i].move();
+         for (var j = 0; j < flowers.length ; j++)
+            {
+                if (drops[i].hits(flowers[j]))
+                {
+                    flowers[j].grow();
+                    drops[i].evaporate(); 
+                }
+            }
         }
     for (var i = 0; i < flowers.length ; i++)
         {
          flowers[i].show();  
+        }
+    for (var i =  drops.length-1 ; i >=0; i--)
+        {
+            if (drops[i].toDelete)
+                { 
+                    drops.splice(i, 1);
+                }
         }
     
 }
