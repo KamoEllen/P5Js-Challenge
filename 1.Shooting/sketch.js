@@ -30,7 +30,7 @@ function draw() {
             }
         }
         //checkin if flowers hit right plane
-        var right = false; //direction for flowers
+        var edge = false; //direction for flowers
     for (var i = 0; i < flowers.length ; i++)
         {
          flowers[i].show();  //show + move flowers
@@ -38,12 +38,12 @@ function draw() {
 
          
          
-         if (flowers[i].x > width)
+         if (flowers[i].x > width || flowers[i].x < 0)
          {
-            right = true;
+            edge = true;
          }
         }
-        if (right)
+        if (edge)
         {
             for (var i = 0; i < flowers.length ; i++)
                 {
