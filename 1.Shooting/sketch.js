@@ -65,7 +65,11 @@ function draw() {
 
 function keyReleased()
 {
-ship.setDir(0);
+    if (key != ' ')
+    {
+       ship.setDir(0); 
+    }
+
 }
 
 function keyPressed()
