@@ -16,6 +16,7 @@ function setup() {
 function draw() {
     background(51);
     ship.show();
+    ship.move(); //ship is always moving when space key is pressed
     for (var i = 0; i < drops.length ; i++)
         {
          drops[i].show();  
@@ -29,7 +30,7 @@ function draw() {
                 }
             }
         }
-        //checkin if flowers hit right plane
+        //checkin if flowers hit edge 
         var edge = false; //direction for flowers
     for (var i = 0; i < flowers.length ; i++)
         {
@@ -37,7 +38,7 @@ function draw() {
          flowers[i].move(); 
 
          
-         
+         //once flowers hit edge , move down and towards opposite side
          if (flowers[i].x > width || flowers[i].x < 0)
          {
             edge = true;
@@ -72,11 +73,11 @@ function keyPressed()
 if (keyCode === RIGHT_ARROW)
 {
     //ship.left();
-    ship.move(1);
+    ship.setDir(1);
 }
 else if(keyCode === LEFT_ARROW)
 {
     //ship.right();
-    ship.move(-1);
+    ship.setDir(-1);
 }
 }

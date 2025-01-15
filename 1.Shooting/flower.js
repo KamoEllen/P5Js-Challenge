@@ -23,7 +23,8 @@ function Flower(x,y)
 
     this.show = function() //how it looks
     { 
-        fill(255,0,200);
+        noStroke();
+        fill(255,0,200,150);
         rectMode(CENTER);
         ellipse(this.x , this.y, this.r *2, this.r *2);
     }
