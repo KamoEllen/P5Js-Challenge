@@ -29,9 +29,28 @@ function draw() {
                 }
             }
         }
+        //checkin if flowers hit right plane
+        var right = false; //direction for flowers
     for (var i = 0; i < flowers.length ; i++)
         {
-         flowers[i].show();  
+         flowers[i].show();  //show + move flowers
+         flowers[i].move(); 
+
+         
+         
+         if (flowers[i].x > width)
+         {
+            right = true;
+         }
+        }
+        if (right)
+        {
+            for (var i = 0; i < flowers.length ; i++)
+                {
+                // if flowers hit right wall , they should shift down
+                 flowers[i].shiftDown();
+                
+                }
         }
     for (var i =  drops.length-1 ; i >=0; i--)
         {
