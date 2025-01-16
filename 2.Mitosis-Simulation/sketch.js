@@ -25,6 +25,7 @@ function mousePressed() //global function determine if user clicked
         {
             cells.push(cells[i].mitosis());
             cells.push(cells[i].mitosis());
+            cells.splice(i,1);
            // console.log("CLicked");
         }
     }
