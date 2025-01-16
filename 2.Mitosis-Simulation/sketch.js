@@ -23,7 +23,9 @@ function mousePressed() //global function determine if user clicked
     {
         if (cells[i].clicked(mouseX,mouseY))
         {
-            console.log("CLicked");
+            cells.push(cells[i].mitosis());
+            cells.push(cells[i].mitosis());
+           // console.log("CLicked");
         }
     }
 }
