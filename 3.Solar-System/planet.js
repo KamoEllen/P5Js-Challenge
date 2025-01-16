@@ -41,8 +41,8 @@ class Planet {
       
       rotate(this.angle);
       translate(this.distance, 0);
-      
-      ellipse(0, 0, this.radius * 2, this.radius * 2);
+      sphere(this.radius); //replacing ellipse
+      //ellipse(0, 0, this.radius * 2, this.radius * 2);
   
       if (this.planets != null) {
         for (let planet of this.planets) {

@@ -1,7 +1,7 @@
 let sun;
 
 function setup() {
-    createCanvas(600, 600);  
+    createCanvas(600, 600, WEBGL);  //used to draw 3d shapes using p5js
     sun = new Planet(50, 0);  
     sun.spawnMoons(5);  // Create 5 planets
 
