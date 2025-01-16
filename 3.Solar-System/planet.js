@@ -9,20 +9,23 @@ class Planet {
       this.radius = radius;
       this.angle = random(TWO_PI);
       this.distance = distance;
-      this.orbitSpeed = random(0.01, 0.03);  //for each planet
+      // Slower orbit speed for larger objects
+      this.orbitSpeed = radius > 20 ? 
+                       random(0.005, 0.01) :  // Planets move slower
+                       random(0.02, 0.03);    // Moons move faster
     }
   
     spawnMoons(total) {
       this.planets = new Array(total);
       for (let i = 0; i < this.planets.length; i++) {
-        const moonRadius = this.radius * 0.5;
-        const moonDistance = random(75, 300);
+        const moonRadius = this.radius * 0.3;  // Smaller moons
+        // Moons stay closer to their planet
+        const moonDistance = random(this.radius * 2, this.radius * 4);
         this.planets[i] = new Planet(moonRadius, moonDistance);
       }
     }
   
     orbit() {
-      // Update the angle to create orbital motion
       this.angle += this.orbitSpeed;
       
       if (this.planets != null) {
@@ -33,7 +36,7 @@ class Planet {
     }
   
     show() {
-      push();  // Use push() instead of pushMatrix() in p5.js
+      push();
       fill(255, 100);
       
       rotate(this.angle);
@@ -48,4 +51,4 @@ class Planet {
       }
       pop();  
     }
-  }
+}
