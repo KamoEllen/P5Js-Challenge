@@ -37,7 +37,8 @@ class Planet {
   
     show() {
       push();
-      fill(255, 100);
+      noStroke();
+      fill(255); 
       
       rotate(this.angle);
       translate(this.distance, 0);

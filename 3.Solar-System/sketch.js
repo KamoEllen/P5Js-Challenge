@@ -14,6 +14,7 @@ function setup() {
 
 function draw() {
     background(0);
+    lights();
     translate(width/2, height/2);
     sun.show();
     sun.orbit();
