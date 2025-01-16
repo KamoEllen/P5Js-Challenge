@@ -41,8 +41,8 @@ function Cell(pos, r , c) {
     }
     this.show  = function()
     {
-        fill(this.c);
-        noStroke();
+        fill(this.c , 100);
+        //stroke();
             ellipse(this.pos.x,this.pos.y, this.r,this.r);
     }
 }
