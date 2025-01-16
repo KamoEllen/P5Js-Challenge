@@ -1,7 +1,17 @@
 function Cell(pos, r , c) {
-    this.pos = pos || createVector(random(width), random(height));
+
+    if (pos)
+    {
+        this.pos = pos.copy();
+    }
+    else
+    {
+      this.pos = createVector(random(width), random(height));  
+    }
+
+    //this.pos = pos || createVector(random(width), random(height));
     //this.pos = createVector(random(width) , random(height));
-    this.r = r || 60;
+    this.r = r || 60; 
     //this.c = color(random(100,255),0,random(100,255));
     this.c = c || color(random(100,255),0,random(100,255));
 
