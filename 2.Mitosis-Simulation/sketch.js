@@ -19,7 +19,7 @@ function draw() {
 //did user click mouse  & did they click on cell obj
 function mousePressed() //global function determine if user clicked
 {
-    for (var i = 0; i < cells.length;i++)
+    for (var i =cells.length -1; i >= 0;i--)
     {
         if (cells[i].clicked(mouseX,mouseY))
         {
