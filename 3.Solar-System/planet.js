@@ -51,7 +51,7 @@ class Planet {
         rotateY(this.angle * this.rotationAxis.y);
         rotateZ(this.angle * this.rotationAxis.z);
         stroke(255);//i want the line to have a stroke
-        line(0,0,0,this.v.x*10,this.v.y*10,this.v.z*10); //line not workin
+        line(0,0,0,this.v.x,this.v.y,this.v.z); 
        translate(this.v.x, this.v.y, this.v.z);
         sphere(this.radius);
 
