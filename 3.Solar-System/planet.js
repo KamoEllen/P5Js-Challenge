@@ -16,15 +16,24 @@ class Planet {
                        random(0.005, 0.01) : 
                        random(0.02, 0.03);
     }
-  
+
     spawnMoons(total) {
-      this.planets = new Array(total);
-      for (let i = 0; i < this.planets.length; i++) {
-        const moonRadius = this.radius * 0.3;
-        const moonDistance = random(this.radius * 2, this.radius * 4);
-        this.planets[i] = new Planet(moonRadius, moonDistance);
+        this.planets = new Array(total);
+        for (let i = 0; i < this.planets.length; i++) {
+          const moonRadius = this.radius * 0.3;
+          const moonDistance = random(this.radius * 2, this.radius * 4);
+          this.planets[i] = new Planet(moonRadius, moonDistance);
+        }
       }
-    }
+  
+    // spawnMoons(total) {
+    //   this.planets = new Array(total);
+    //   for (let i = 0; i < this.planets.length; i++) {
+    //     const moonRadius = this.radius * 0.3;
+    //     const moonDistance = random(this.radius * 2, this.radius * 4);
+    //     this.planets[i] = new Planet(moonRadius, moonDistance);
+    //   }
+    // }
   
     orbit() {
       this.v = createVector(
