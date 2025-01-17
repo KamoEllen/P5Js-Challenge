@@ -3,9 +3,16 @@ class Planet {
     radius;
     angle;
     distance;
-    orbitSpeed; 
-  
+    orbitSpeed;
+    v;   //createVector()
+
     constructor(radius, distance) {
+      //v = PVector.random3D();
+      this.v = createVector(1,0,0);
+      this.v.mult(this.distance);
+
+
+      //is.v.mult(this.distance);
       this.radius = radius;
       this.angle = random(TWO_PI);
       this.distance = distance;
@@ -26,7 +33,8 @@ class Planet {
     }
   
     orbit() {
-      this.angle += this.orbitSpeed;
+        this.v.rotate(this.orbitSpeed);
+     // this.angle += this.orbitSpeed;
       
       if (this.planets != null) {
         for (let planet of this.planets) {
@@ -38,10 +46,12 @@ class Planet {
     show() {
       push();
       noStroke();
-      fill(255); 
+      fill(255);  
       
-      rotate(this.angle);
-      translate(this.distance, 0);
+      //rotate(this.angle);
+      //translate(this.distance, 0);
+      
+      translate(this.v.x,this.v.y,this.v.z);
       sphere(this.radius); //replacing ellipse
       //ellipse(0, 0, this.radius * 2, this.radius * 2);
   
