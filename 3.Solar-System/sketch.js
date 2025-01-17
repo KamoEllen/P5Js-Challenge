@@ -1,13 +1,12 @@
 let sun;
 
 function setup() {
-    createCanvas(600, 600, WEBGL);  //used to draw 3d shapes using p5js
-    sun = new Planet(50, 0);  
-    sun.spawnMoons(5);  // Create 5 planets
+    createCanvas(1000,1000, WEBGL);
+    sun = new Planet(50, 0);
+    sun.spawnMoons(5);
 
-    // Fix: Convert random number to integer for number of moons
     for (let planet of sun.planets) {
-        let numMoons = floor(random(0, 4));  // Will give 0, 1, 2, or 3 moons
+        let numMoons = floor(random(0, 4));
         planet.spawnMoons(numMoons);
     }
 }
@@ -15,7 +14,10 @@ function setup() {
 function draw() {
     background(0);
     lights();
-    translate(width/2, height/2);
+    // Add camera control
+    camera(200, -200, 200,  // camera position
+           0, 0, 0,         // look at center
+           0, 1, 0);        // up vector
     sun.show();
     sun.orbit();
 }
