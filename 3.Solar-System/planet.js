@@ -45,13 +45,14 @@ class Planet {
        noStroke(); //the sphere shouldnt hve stroke
         fill(this.color);
        
-        translate(this.v.x, this.v.y, this.v.z);
+        
         // Use rotateX, rotateY, rotateZ instead of single rotate
         rotateX(this.angle * this.rotationAxis.x);
         rotateY(this.angle * this.rotationAxis.y);
         rotateZ(this.angle * this.rotationAxis.z);
         stroke(255);//i want the line to have a stroke
         line(0,0,0,this.v.x*10,this.v.y*10,this.v.z*10); //line not workin
+       translate(this.v.x, this.v.y, this.v.z);
         sphere(this.radius);
 
         if (this.planets != null) {
