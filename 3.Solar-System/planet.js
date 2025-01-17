@@ -2,7 +2,9 @@ class Planet {
     constructor(radius, distance) {
         this.planets = [];
         this.radius = radius;
+        this.p ;
         this.distance = distance;
+        this.v2 = createVector(1, 0, 1); //not workin
         this.v = createVector(distance, 0, 0);
         this.angle = random(TWO_PI);
         this.orbitSpeed = radius > 20 ? 
@@ -40,7 +42,9 @@ class Planet {
         push();
         noStroke();
         fill(this.color);
-        
+        this.p = createVector(this.v2.cross()); //not workin
+        // /this.p = this.v2.cross(); //not workin
+        rotate(this.angle,p.x,this.p.y.p.z);
         translate(this.v.x, this.v.y, this.v.z);
         sphere(this.radius);
 
@@ -52,3 +56,5 @@ class Planet {
         pop();
     }
 }
+//I learnt linear algebra last month for fun
+//and now i get to use 'cross-product' i'm so happy.
