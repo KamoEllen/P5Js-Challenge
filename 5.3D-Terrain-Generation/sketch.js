@@ -19,9 +19,8 @@ function draw() {
     //(w % scl) / 2: This handles centering when the canvas size isn't perfectly divisible by the scale
     let xOffset = -w / 2 + (w % scl) / 2;
     let yOffset = -h / 2 + (h % scl) / 2;
-
-    for (let x = 0; x < cols; x++) {
-        for (let y = 0; y < rows; y++) {
+    for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
             stroke(255);
             noFill();
             rect(x * scl + xOffset, y * scl + yOffset, scl, scl);
