@@ -27,6 +27,7 @@ class Cell {
     constructor(i, j) {
         this.i = i; // column
         this.j = j; // row
+        this.walls= [true , true, true, true];
     }
 
     show() {
@@ -34,10 +35,26 @@ class Cell {
         let y = this.j * w;
         stroke(255);
         //creating grid by drawing lines seperately
-        line(x, y, x + w, y); // horizontal line
-        line(x+w, y , x+w, y+ w);
-        line(x+w,y+w,x,y+w);
-        line(x,y+w,x,y);
+        if (this.walls[0])
+        {
+            line(x   , y  , x + w  , y); // horizontal line
+        }
+        if (this.walls[1])
+        {
+           line(x+w , y  , x+w    , y+ w);
+        
+        }
+        if (this.walls[2])
+        {
+           line(x+w ,y+w ,x       ,y+w);   
+        }
+        if (this.walls[3])
+        {
+            line(x   ,y+w ,x       ,y); 
+        }
+        
+       
+       
         // noFill();
         // Reflect(x,y,w,w);
     }
