@@ -2,6 +2,8 @@ let cols;
 let rows;
 let w = 40; // width of each cell
 let grid = [];
+let current;
+
 
 function setup() {
     createCanvas(600, 400);
@@ -14,48 +16,47 @@ function setup() {
             grid.push(cell);
         }
     }
+    current = grid[0]; //starting at top right pos
 }
 
 function draw() {
-    background(0);
+    background(51);
     for (let i = 0; i < grid.length; i++) {
         grid[i].show();
     }
+    current.visited= true;
 }
 
 class Cell {
     constructor(i, j) {
-        this.i = i; // column
-        this.j = j; // row
-        this.walls= [true , true, true, true];
+        this.i = i;
+        this.j = j;
+        this.walls = [true, true, true, true];
+        this.visited = false;
     }
 
     show() {
         let x = this.i * w;
         let y = this.j * w;
+        
+        if (this.visited) {
+            noStroke();
+            fill(255, 0, 255, 100);
+            rect(x, y, w, w);
+        }
+        
         stroke(255);
-        //creating grid by drawing lines seperately
-        if (this.walls[0])
-        {
-            line(x   , y  , x + w  , y); // horizontal line
+        if (this.walls[0]) {
+            line(x, y, x + w, y);
         }
-        if (this.walls[1])
-        {
-           line(x+w , y  , x+w    , y+ w);
-        
+        if (this.walls[1]) {
+            line(x + w, y, x + w, y + w);
         }
-        if (this.walls[2])
-        {
-           line(x+w ,y+w ,x       ,y+w);   
+        if (this.walls[2]) {
+            line(x + w, y + w, x, y + w);
         }
-        if (this.walls[3])
-        {
-            line(x   ,y+w ,x       ,y); 
+        if (this.walls[3]) {
+            line(x, y + w, x, y);
         }
-        
-       
-       
-        // noFill();
-        // Reflect(x,y,w,w);
     }
 }
