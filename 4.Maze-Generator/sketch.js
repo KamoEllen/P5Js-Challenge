@@ -1,7 +1,8 @@
 let cols;
 let rows;
-let w = 40; // width of each cell
+let w = 50; // width of each cell
 let grid = [];
+let  stack= []; 
 let current;
 
 function setup() {
@@ -27,15 +28,21 @@ function draw() {
     current.visited = true;
     current.highlight();
      //STEP 1 - pick random neighbor
+     //we get stuck if there are no available neighbors(step 2)  
     let next = current.checkNeighbors();
     if (next) {
-
+        //STEP 2: Push the current cell to the stack - backtracking :) now
+        stack.push(current); 
        
         next.visited = true;
          //STEP 3: Remove wall between current n chosen cell
          removWalls(current,next);
         //STEP 4: Mark chosen as visisted
         current = next;
+    }
+    else if (stack.length >0)
+    {
+        current = stack.pop()
     }
    
 }
