@@ -16,6 +16,7 @@ function setup() {
         }
     }
     current = grid[0]; //starting at top right pos
+    frameRate(5);
 }
 
 function draw() {
@@ -24,11 +25,18 @@ function draw() {
         grid[i].show();
     }
     current.visited = true;
+     //STEP 1 - pick random neighbor
     let next = current.checkNeighbors();
     if (next) {
+
+       
         next.visited = true;
+         //STEP 3: Remove wall between current n chosen cell
+         removWalls(current,next);
+        //STEP 4: Mark chosen as visisted
         current = next;
     }
+   
 }
 
 function index(i, j) {
@@ -38,6 +46,75 @@ function index(i, j) {
     return i + j * cols;
 }
 
+function removWalls(a,b)
+{
+    //2-3
+    // 1
+
+    //x
+    var x = a.i - b.i;
+    if (x===1)
+    {
+        //                   a and b
+        //           _______________________
+        //           |          |          |
+        //           |          |          |
+        //           |          |          |
+        //           |__________|__________|
+        //            
+        a.walls[1]  = false; 
+        //          0 (top)
+        //           ____________
+        //           |          |
+        // 3(Left)   |          |  1 (right)
+        //           |          |
+        //           |__________|
+        //             2 (bottom)
+        b.walls[3] = false;
+                //          0 (top)
+        //           ____________
+        //           |          |
+        // 3(Left)   |          |  1 (right)
+        //           |          |
+        //           |__________|
+        //             2 (bottom)
+    }
+    else if (x=== -1)
+    {
+        a.walls[3] = false;
+        b.walls[1] = false;
+
+    }
+
+    //y
+    var y = a.j - b.j;
+    if (y===1)
+    {
+        //         b - a = 1
+        //        a must have bottom removed
+        //        b must have top removed
+        //                0
+        //           ____________
+        //           |          |          
+        //        3  |          |  1  a  = 29 
+        //           |          |          
+        //           |__________|
+        //           |          |          
+        //         3 |          |      b  = 30
+        //           |          |          
+        //           |__________|
+        //                 2
+        //            
+        a.walls[2]  = false; 
+        b.walls[0] = false;
+    }
+    else if (y=== -1)
+    {
+        a.walls[0] = false;
+        b.walls[2] = false;
+
+    }
+}
 class Cell {
     constructor(i, j) {
         this.i = i;
