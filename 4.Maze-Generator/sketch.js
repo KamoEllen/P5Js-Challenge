@@ -157,14 +157,15 @@ class Cell {
     show() {
         let x = this.i * w;
         let y = this.j * w;
-        
+        // stroke();
+        stroke(255);
         if (this.visited) {
             noStroke();
             fill(255, 0, 255, 100);
             rect(x, y, w, w);
         }
         
-        stroke(255);
+        // stroke(255);
         if (this.walls[0]) {
             line(x, y, x + w, y);
         }
