@@ -33,7 +33,11 @@ class Cell {
         let x = this.i * w;
         let y = this.j * w;
         stroke(255);
+        //creating grid by drawing lines seperately
         line(x, y, x + w, y); // horizontal line
+        line(x+w, y , x+w, y+ w);
+        line(x+w,y+w,x,y+w);
+        line(x,y+w,x,y);
         // noFill();
         // Reflect(x,y,w,w);
     }
