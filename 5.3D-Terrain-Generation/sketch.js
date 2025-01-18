@@ -26,6 +26,7 @@ function draw() {
         beginShape(TRIANGLE_STRIP);
         for (let x = 0; x < cols; x++) {
             vertex(x*scl + xOffset, y * scl + yOffset);
+            vertex(x*scl + xOffset, (y+1) * scl + yOffset);
            // rect(x * scl + xOffset, y * scl + yOffset, scl, scl);
         }
         endShape();
