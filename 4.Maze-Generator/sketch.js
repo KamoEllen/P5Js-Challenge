@@ -62,7 +62,7 @@ function removWalls(a,b)
         //           |          |          |
         //           |__________|__________|
         //            
-        a.walls[1]  = false; 
+        a.walls[3]  = false; 
         //          0 (top)
         //           ____________
         //           |          |
@@ -70,7 +70,7 @@ function removWalls(a,b)
         //           |          |
         //           |__________|
         //             2 (bottom)
-        b.walls[3] = false;
+        b.walls[1] = false;
                 //          0 (top)
         //           ____________
         //           |          |
@@ -81,8 +81,8 @@ function removWalls(a,b)
     }
     else if (x=== -1)
     {
-        a.walls[3] = false;
-        b.walls[1] = false;
+        a.walls[1] = false;
+        b.walls[3] = false;
 
     }
 
@@ -105,13 +105,13 @@ function removWalls(a,b)
         //           |__________|
         //                 2
         //            
-        a.walls[2]  = false; 
-        b.walls[0] = false;
+        a.walls[0]  = false; 
+        b.walls[2] = false;
     }
     else if (y=== -1)
     {
-        a.walls[0] = false;
-        b.walls[2] = false;
+        a.walls[2] = false;
+        b.walls[0] = false;
 
     }
 }
@@ -159,11 +159,7 @@ class Cell {
         let y = this.j * w;
         // stroke();
         stroke(255);
-        if (this.visited) {
-            noStroke();
-            fill(255, 0, 255, 100);
-            rect(x, y, w, w);
-        }
+       
         
         // stroke(255);
         if (this.walls[0]) {
@@ -177,6 +173,11 @@ class Cell {
         }
         if (this.walls[3]) {
             line(x, y + w, x, y);
+        }
+        if (this.visited) {
+            noStroke(); //not working 
+            fill(255, 0, 255, 100);
+            rect(x, y, w, w);
         }
     }
 }
