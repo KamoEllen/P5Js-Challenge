@@ -5,6 +5,10 @@
 //   [ 1 , 1 , 1] ]
 var grid;
 var next;
+var dA =1;
+var dB = 0.5;
+var feed= 0.055;
+var k = 0.062; //kill rate - how fast values r being removed
 
 function setup() {
     createCanvas(600, 400);
@@ -30,9 +34,22 @@ function draw() {
         {
             for (var y = 0; y < height; y++)
             {
-               next[x][y].a = grid[x][y].a*0.9;
-               next[x][y].b = grid[x][y].b*0.8;
-              // next[x][y] = (a/b)/2;
+                var a = grid[x][y].a ;
+                var b = grid[x][y].b ;
+                //a
+                next[x][y].a = a +
+                (dA +  laplaceA() * a  ) -
+                (a * b * b)  +
+                (feed * (1 - a));
+                //b
+                next[x][y].a = b +
+                (dB +  laplaceB() ) +
+                (a * b * b)  +
+                ((k + feed) * b);
+
+            //    next[x][y].a = grid[x][y].a*0.9;
+            //    next[x][y].b = grid[x][y].b*0.8;
+              
             }
         }
 
