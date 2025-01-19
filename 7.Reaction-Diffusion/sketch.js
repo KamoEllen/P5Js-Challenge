@@ -83,7 +83,7 @@ function laplaceA(x, y) {
     return sumA;
 }
 
-function laplaceB() {  
+function laplaceB(x,y){
     var sumB = 0;
     sumB += grid[x][y].b * -1;
     sumB += grid[x-1][y].b * 0.2;
