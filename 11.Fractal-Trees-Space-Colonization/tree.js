@@ -48,4 +48,55 @@ class Tree {
             this.branches[i].show();
         }
     }
+
+    grow = function()
+    {
+        for (var i = 0; i < this.leaves.length; i++)
+        {
+            //finding each leaves closest brannch between
+            //root n max distance
+            var leaf = this.leaves[i];
+            var closestBranch = null;
+            var record = 1000000000;
+            // var closestDir ;
+
+            for ( var j = 0; j < this.branches.length; j++)
+            {
+                var branch = this.branch[j];
+                var d = p5.Vector.dist(leaf.pos, branch.pos);
+
+                if (d < min_dist)
+                {
+                    //marking leaf once its reached
+                    leaf.reached = true;
+                    break;
+                }
+                else if (d > max_dist)
+                {
+                    
+                }
+                else if (closestBranch != null || d < record)
+                {
+                        closestBranch = branch;
+                    record = d;
+
+                }
+                // else if (closestBranch != null)
+                // {
+                //     //if unable to find the nearest branch , the current
+                //     //branch becomes it
+                //     closestBranch = branch;
+                //     record = d;
+                // }
+                // else if (d < record)
+                // {
+                //     closestBranch = branch;
+                //     record = d;
+                // }
+
+            }
+            
+        }
+
+    }
 }
