@@ -104,6 +104,7 @@ class Tree {
                 newDir.normalize();
                 // var newBranch();
                 closestBranch.dir.add(newDir);
+                closestBranch.count++;
             }
 
         }

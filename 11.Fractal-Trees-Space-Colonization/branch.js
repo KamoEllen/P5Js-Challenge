@@ -4,7 +4,8 @@ function Branch(parent,pos,dir)
     this.pos = pos;
     this.parent = parent;
     this.dir = dir;
-    
+    //counts how many times its been found near a leave - average 
+    this.count = 0;
 
     this.next = function()
     {
