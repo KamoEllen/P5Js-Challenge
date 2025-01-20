@@ -69,13 +69,14 @@ class Tree {
                 {
                     //marking leaf once its reached
                     leaf.reached = true;
+                    closestBranch = null;
                     break;
                 }
                 else if (d > max_dist)
                 {
                     
                 }
-                else if (closestBranch != null || d < record)
+                else if (closestBranch == null || d < record)
                 {
                         closestBranch = branch;
                     record = d;
@@ -95,7 +96,16 @@ class Tree {
                 // }
 
             }
-            
+            if (closestBranch != null)
+            {
+                //want leaf to pull branches towads it
+                //once branch reaches leaf , leaf gets deleted
+                var newDir = p5.Vector.sub(leaf.pos , closestBranch.pos);
+                newDir.normalize();
+                // var newBranch();
+                closestBranch.dir.add(newDir);
+            }
+
         }
 
     }
