@@ -1,12 +1,12 @@
 //continue until you reach (*1)
 //4! = 4 * 3 * 2 * 1
 //5!= 5 * 4 * 3 * 2 * 1
-var angle = PI/4;
+var angle = 0;
 var slider;
 
 function setup() {
     createCanvas(400, 400);
-    slider = createSlider(0,TWO_PI, PI/4);
+    slider = createSlider(0,TWO_PI, PI/4,0.01);
 }
 
 function draw() {
