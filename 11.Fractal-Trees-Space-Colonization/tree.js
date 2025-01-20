@@ -3,12 +3,12 @@ class Tree {
         this.leaves = [];
         this.branches = [];
 
-        for (let i = 0; i < 200; i++) {//less than 200 leaves
+        for (let i = 0; i < 500; i++) {//less than 200 leaves
             this.leaves.push(new Leaf());
         }
 
         //new branch from parent, we have 
-        let pos = createVector(width / 2, height / 2);
+        let pos = createVector(width / 2, height );
         let dir = createVector(0, -1);
         let root = new Branch(null, pos, dir);
 

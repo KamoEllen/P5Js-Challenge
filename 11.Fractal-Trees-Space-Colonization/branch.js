@@ -13,12 +13,12 @@ function Branch(parent,pos,dir)
         return nextBranch;
     }
 
-    this.show = function()
-    {
-        if (parent != null)
-        {
-            stroke(255);
-            AudioListener(this.pos.x , this.pos.y , this.parent.pos.x, thiss.parent.pos.y);
+    this.show = function() {
+        if (parent != null) {
+          stroke(255);
+          strokeWeight(2);
+          line(this.pos.x, this.pos.y, this.parent.pos.x, this.parent.pos.y);
         }
-    }
+    
+      }
 }
