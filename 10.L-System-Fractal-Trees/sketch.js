@@ -7,12 +7,14 @@
 // 3 : AB A AB
 var axiom = "A";
 var sentence = axiom;
-var rule1 =
+var rules = [];
+
+rules[0] =
 {
     a : "A",
-    b : "AB"
+    b : "ABC"
 }
-var rule2 =
+rules[1] =
 {
     a : "B",
     b : "A"
@@ -24,24 +26,23 @@ function generate()
     for (var i = 0; i < sentence.length;i++)
     {
         var current = sentence.charAt(i);
-        if (current == rule1.a)
+        var found = false;
+        for (var j = 0; j < rules.length;j++)
         {
-            nextSentence += rule1.b;
-
+            if (current == rules[j].a)
+                {
+                    found = true;
+                    nextSentence += rules[j].b;
+                    break;
+                }
         }
-        else if (current == rule2.a)
-        {
-            nextSentence += rule2.b;
-        }
-        else
-        {
-            nextSentence += current;
-        }
-
+       if (!found)
+       {
+        nextSentence += current;
+       }
     }
     sentence = nextSentence;
     createP(sentence);
-
 }
 function setup() {
     // createCanvas(400, 400);
