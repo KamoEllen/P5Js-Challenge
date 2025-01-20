@@ -31,7 +31,8 @@ function branch(len)
     //without 'translate(0,-len);' it will start from origin
     //want it to start at top of last branch
     rotate(PI/4);
-    line(0,0,0,-len*0.67);
+    branch(len * 0.67);
+    // line(0,0,0,-len*0.67);
 
 } //wanna draw branches from origin , but origin is
 //top left corner , so imma switch that n make the origin
