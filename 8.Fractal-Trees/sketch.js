@@ -36,11 +36,18 @@ function branch(len)
     //without 'translate(0,-len);' it will start from origin
     //want it to start at top of last branch
     // rotate(PI/4);
-     rotate(angle);
+    
     if (len > 4)
     {
+        push();
+        rotate(angle);
         branch(len * 0.67); //calling branch n rotatin then again
+        //want to come back to parent then move in diff direction
+        rotate(-angle);
+        branch(len * 0.67);
+        pop();
     }
+   
     // branch(len * 0.67); //calling branch from within branch - infinite loop
 
     // line(0,0,0,-len*0.67);
