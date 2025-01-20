@@ -1,5 +1,5 @@
 var tree;
-var max_dist = 10;
+var max_dist = 200;
 var min_dist = 10;
 
 function setup() {
