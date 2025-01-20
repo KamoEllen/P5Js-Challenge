@@ -1,102 +1,84 @@
-//l-system
-//recursive way of generating sentences over and over again using string replacement
-//rule : v
-// 0 : A
-// 1 : AB
-// 2 : AB B
-// 3 : AB A AB
-var axiom = "F";
-// var axiom = "A";
-var sentence = axiom;
-var rules = [];
-var len = 100;
+// L-system visualization using p5.js
+// Generates a plant-like fractal structure using string replacement rules
 
-rules[0] =
-{
-    a : "F",
-    b : "FF+[+F-F-F]-[-F+F+F]"
+let axiom = "F";
+let sentence = axiom;
+let rules = [];
+let len = 100;
+let angle;
+
+// Define the replacement rule for the plant structure
+rules[0] = {
+    a: "F",
+    b: "FF+[+F-F-F]-[-F+F+F]"
+};
+
+function setup() {
+    createCanvas(400, 400);
+    angle = radians(25);
+    background(51);
+    createP(axiom);
+    turtle();
+    
+    // Create and position the generate button
+    let button = createButton("generate");
+    button.mousePressed(generate);
 }
-// rules[0] =
-// {
-//     a : "A",
-//     b : "ABC"
-// }
-// rules[1] =
-// {
-//     a : "B",
-//     b : "A"
-// }
 
-function generate()
-{
-    var nextSentence = "";
-    for (var i = 0; i < sentence.length;i++)
-    {
-        var current = sentence.charAt(i);
-        var found = false;
-        for (var j = 0; j < rules.length;j++)
-        {
-            if (current == rules[j].a)
-                {
-                    found = true;
-                    nextSentence += rules[j].b;
-                    break;
-                }
+function generate() {
+    len *= 0.5;
+    let nextSentence = "";
+    
+    // Apply replacement rules
+    for (let i = 0; i < sentence.length; i++) {
+        let current = sentence.charAt(i);
+        let found = false;
+        
+        for (let j = 0; j < rules.length; j++) {
+            if (current == rules[j].a) {
+                found = true;
+                nextSentence += rules[j].b;
+                break;
+            }
         }
-       if (!found)
-       {
-        nextSentence += current;
-       }
+        
+        if (!found) {
+            nextSentence += current;
+        }
     }
+    
     sentence = nextSentence;
     createP(sentence);
     turtle();
 }
 
-function turtle()
-{
+function turtle() {
     background(51);
+    resetMatrix();
     translate(width/2, height);
-    stroke(255);
-    //turtle graphics engine 
-    for (var i = 0; i < sentence.length; i++)
-    {
-        var current =sentence.charAt(i);
-
-        if (current == "F")
-        {
-            line(0,0,0,-len);
-            translate(0,-len);
-        }
-        else if (current == "+")
-        {
-            rotate(PI/6);
-        }
-        else if (current == "-")
-        {
-            rotate(-PI/6);
-        }
-        else if (current == "[")
-        {
-            push();
-        }
-        else if (current == "]")
-        {
-            pop();
+    stroke(255, 100);
+    
+    // Turtle graphics engine
+    for (let i = 0; i < sentence.length; i++) {
+        let current = sentence.charAt(i);
+        
+        switch(current) {
+            case "F":
+                line(0, 0, 0, -len);
+                translate(0, -len);
+                break;
+            case "+":
+                rotate(angle);
+                break;
+            case "-":
+                rotate(-angle);  // Fixed: negative angle for counter-clockwise rotation
+                break;
+            case "[":
+                push();
+                break;
+            case "]":
+                pop();
+                break;
         }
     }
-
 }
-function setup() {
-    createCanvas(400, 400);
-    // noCanvas();
-    background(15);
-    createP(axiom);
-    turtle();
-    var button = createButton("generate");
-    button.mousePressed(generate);
-}
-
-// function draw() {
-//     background(51);
-// }
