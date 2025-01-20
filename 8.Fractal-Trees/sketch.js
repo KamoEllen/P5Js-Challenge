@@ -41,7 +41,7 @@ function branch(len)
     {
         branch(len * 0.67); //calling branch n rotatin then again
     }
-    branch(len * 0.67); //calling branch from within branch - infinite loop
+    // branch(len * 0.67); //calling branch from within branch - infinite loop
 
     // line(0,0,0,-len*0.67);
 
