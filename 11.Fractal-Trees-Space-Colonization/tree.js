@@ -2,7 +2,7 @@ function Tree() {
     this.leaves = [];
     this.branches = [];
   
-    for (var i = 0; i < 1500; i++) {
+    for (var i = 0; i < 25; i++) {
       this.leaves.push(new Leaf());
     }
     var pos = createVector(width / 2, height);
