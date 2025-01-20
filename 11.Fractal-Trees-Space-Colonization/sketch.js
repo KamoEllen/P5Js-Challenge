@@ -10,5 +10,5 @@ function setup() {
 function draw() {
   background(51);
   tree.show();
-//   tree.grow();
+  tree.grow();
 }
