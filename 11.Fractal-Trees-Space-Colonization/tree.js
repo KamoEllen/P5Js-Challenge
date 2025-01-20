@@ -108,6 +108,25 @@ class Tree {
             }
 
         }
+        for (var i = this.leaves.length-1; i>= 0; i--)
+        {
+            if (this.leaves[i].reached)
+            {
+                this.leaves.splice(i,1);
+            }
+        }
+        for (var i = 0;i < this.branches.length;i++)
+        {
+            var branch = this.branches[i];
+            if (branch.count > 0)
+            {
+                //new branch attached to it 
+                branch.dir.div(branch.count);
+                var newPos = p5.Vector.add(branch.pos, branch.dir);
+                var newBranch = new Branch(branch , newPos, branch.dir.copy());
+                this.branches.push(nwBranch);
+            }
+        }
 
     }
 }
