@@ -1,12 +1,17 @@
 //continue until you reach (*1)
 //4! = 4 * 3 * 2 * 1
 //5!= 5 * 4 * 3 * 2 * 1
+var angle = PI/4;
+var slider;
+
 function setup() {
     createCanvas(400, 400);
+    slider = createSlider(0,TWO_PI, PI/4);
 }
 
 function draw() {
     background(51);
+    angle = slider.value();
 
     //trunk of tree
     // var len = 100; //length
@@ -30,8 +35,14 @@ function branch(len)
     translate(0,-len);
     //without 'translate(0,-len);' it will start from origin
     //want it to start at top of last branch
-    rotate(PI/4);
-    branch(len * 0.67);
+    // rotate(PI/4);
+     rotate(angle);
+    if (len > 4)
+    {
+        branch(len * 0.67); //calling branch n rotatin then again
+    }
+    branch(len * 0.67); //calling branch from within branch - infinite loop
+
     // line(0,0,0,-len*0.67);
 
 } //wanna draw branches from origin , but origin is
