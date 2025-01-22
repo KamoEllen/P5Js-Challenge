@@ -2,8 +2,10 @@
 // x^2 + y^2 = y^2
 // x= r * Cose(angle)
 // y = r * sin(angle)
+var slider;
 function setup() {
     createCanvas(400, 400);
+    slider = createSlider(0,10,2,0.01);
   }
   function sgn(val)
   {
@@ -23,11 +25,13 @@ function setup() {
   
   function draw() {
     background(51);
+   
     translate(width/2, height/2);
     // var r = 100;
-    var a = 100;
+    var a = 200;
     var b = 100;
-    var n = 2; //m to n
+    // var n = 4; //m to n
+    var n = slider.value();
     stroke(255);
     noFill();
 
