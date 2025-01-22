@@ -27,7 +27,7 @@ function setup() {
     // var r = 100;
     var a = 100;
     var b = 100;
-    var m = 2;
+    var n = 2; //m to n
     stroke(255);
     noFill();
 
@@ -41,7 +41,7 @@ function setup() {
         //sgn(num) <- is num is +positive it returns 1 , if num is
         //negative it returns -1 , if num is 0 , it returns 0
         var x = pow(abs(cos(angle)) , na) * a * sgn(cos(angle));
-        var yx = pow(abs(sin(angle)) , na) * b * sgn(sin(angle));
+        var y = pow(abs(sin(angle)) , na) * b * sgn(sin(angle)); //xy to y
 
 
         // point(x,y);
