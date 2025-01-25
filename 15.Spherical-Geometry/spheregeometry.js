@@ -1,10 +1,3 @@
-     //100 -> detail level / points
-     // (radius,latitude,longitude) -> (x,y,z)
-     //Polar Coordinates
-     //x = rcos(theta)
-     //y = rsin(theta)
-     //https://en.wikipedia.org/wiki/Spherical_coordinate_system
-
 const globe = [];
 const r = 200;
 const total = 25;
@@ -13,9 +6,9 @@ let angleY = 0;
 
 function setup() {
   createCanvas(500, 500, WEBGL);
-  fill(12);
+  noFill();
   strokeWeight(2);
-  stroke(30);
+  stroke(200);
 
   for (let i = 0; i < total + 1; i++) {
     globe[i] = [];
@@ -31,7 +24,7 @@ function setup() {
 }
 
 function draw() {
-  background(25);
+  background(51);
   rotateX(angleX);
   rotateY(angleY);
 
