@@ -1,12 +1,25 @@
 class Blob {
     constructor(x, y) {
-        this.pos = createVector(x, y);
-        this.r = 40;
+      this.x = x;
+      this.y = y;
+      let angle = random(0, 2 * PI);
+      this.xspeed = random(2, 5) * Math.cos(angle);
+      this.yspeed = random(2, 5) * Math.sin(angle);
+      this.r = random(120, 240);
     }
-
+  
+    update() {
+      this.x += this.xspeed;
+      this.y += this.yspeed;
+      // Constraining blob within the canvas
+      if (this.x > width || this.x < 0) this.xspeed *= -1;
+      if (this.y > height || this.y < 0) this.yspeed *= -1;
+    }
+  
     show() {
-        fill(51);
-        stroke(255);
-        ellipse(this.pos.x, this.pos.y, this.r * 2, this.r * 2);
+      noFill();
+      stroke(0);
+      strokeWeight(4);
+      ellipse(this.x, this.y, this.r * 2, this.r * 2);
     }
-}
+  }

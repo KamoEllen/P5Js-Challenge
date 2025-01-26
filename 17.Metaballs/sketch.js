@@ -1,44 +1,34 @@
-let blob;
-
-class Blob {
-    constructor() {
-        this.x = width / 2;
-        this.y = height / 2;
-    }
-
-    show() {
-        fill(255);
-        ellipse(this.x, this.y, 50, 50);
-    }
-}
+var blobs = [];
 
 function setup() {
-    createCanvas(300, 300);
-    blob = new Blob();
-}
-  
-  function draw() {
-    background(51);
-    
-    loadPixels();
-
-    for (var x = 0; x < width; x++)
-    {
-        for (var y = 0; y < height; y++)
-        {
-           
-            var index = (x + y * width) * 4;
-            var c = color(x, 0, y);
-            pixels[index] = red(c);
-            // var d = dist(x,y,width/2,height/2);
-            // pixels[index] = color(d)
-            pixels[index + 1] = green(c);
-            pixels[index + 2] = blue(c);
-            pixels[index + 3] = alpha(c);
-
-        }
-    }
-    updatePixels();
-    blob.show(x,y);
-   
+  createCanvas(400, 200);
+  colorMode(HSB, 255);
+  for (let i = 0; i < 10; i++) {
+    blobs.push(new Blob(random(0, width), random(0, height)));
   }
+}
+
+function draw() {
+  background(51);
+
+  loadPixels();
+  for (let x = 0; x < width; x++) {
+    for (let y = 0; y < height; y++) {
+      let sum = 0;
+      for (let i = 0; i < blobs.length; i++) {
+        let xdif = x - blobs[i].x;
+        let ydif = y - blobs[i].y;
+        let d = sqrt((xdif * xdif) + (ydif * ydif));
+        //formula 
+        sum += (10 * blobs[i].r) / d;
+      }
+      let col = color(sum % 255, 255, 255);
+      set(x, y, col);
+    }
+  }
+  updatePixels();
+
+  for (let i = 0; i < blobs.length; i++) {
+    blobs[i].update();
+  }
+}
