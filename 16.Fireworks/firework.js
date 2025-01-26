@@ -1,47 +1,54 @@
 class Firework {
     constructor() {
-        this.exploded = false;
-        this.particles = [];
-        this.position = createVector(random(width), height);
-        this.velocity = createVector(0, random(-12, -8));
-        this.acceleration = createVector(0, 0);
+      this.hu = random(255);
+      this.firework = new Particle(random(width), height, this.hu, true);
+      this.exploded = false;
+      this.particles = [];
     }
-
-    applyForce(force) {
-        this.acceleration.add(force);
+  
+    done() {
+      if (this.exploded && this.particles.length === 0) {
+        return true;
+      } else {
+        return false;
+      }
     }
-
+  
     update() {
-        this.applyForce(gravity);
-        this.velocity.add(this.acceleration);
-        this.position.add(this.velocity);
-        this.acceleration.mult(0);
-
-        //particle explodes into more 
-        if (this.velocity.y >= 0)
-        {
-            // this.firework = null;
-            this.exploded = true;
-            this.explode();
+      if (!this.exploded) {
+        this.firework.applyForce(gravity);
+        this.firework.update();
+  
+        if (this.firework.vel.y >= 0) {
+          this.exploded = true;
+          this.explode();
         }
-    } 
-
-
-    explode = function()
-    {
-        for (var i = 0; i < 100; i++)
-        {
-            var p = new Particle(this.fireworks.pos.x,this.fireworks.pos.y);
-            this.particles.push(p);
+      }
+  
+      for (let i = this.particles.length - 1; i >= 0; i--) {
+        this.particles[i].applyForce(gravity);
+        this.particles[i].update();
+  
+        if (this.particles[i].done()) {
+          this.particles.splice(i, 1);
         }
+      }
     }
+  
+    explode() {
+      for (let i = 0; i < 100; i++) {
+        const p = new Particle(this.firework.pos.x, this.firework.pos.y, this.hu, false);
+        this.particles.push(p);
+      }
+    }
+  
     show() {
-        stroke(255);
-        strokeWeight(4);
-        point(this.position.x, this.position.y);
-        for (var i = 0; i < this.particles.length; i++)
-        {
-            this.particles[i].show();
-        }
+      if (!this.exploded) {
+        this.firework.show();
+      }
+  
+      for (var i = 0; i < this.particles.length; i++) {
+        this.particles[i].show();
+      }
     }
-}
+  }

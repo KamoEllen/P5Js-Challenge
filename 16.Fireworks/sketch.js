@@ -1,28 +1,29 @@
-var fireworks = [];
-var gravity;
+const fireworks = [];
+let gravity;
 
-
-function setup()
-{
-    createCanvas(400, 400);
-    gravity = createVector(0, 0.2);
-   
-    stroke(255);
-    strokeWeight(4);
-    
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  colorMode(HSB);
+  gravity = createVector(0, 0.2);
+  stroke(255);
+  strokeWeight(4);
+  background(0);
 }
-function draw()
-{
-    background(51);
 
-    if (random(1) < 0.1)
-    {
-        fireworks.push(new Firework());
+function draw() {
+  colorMode(RGB);
+  background(0, 0, 0, 25);
+  
+  if (random(1) < 0.04) {
+    fireworks.push(new Firework());
+  }
+  
+  for (let i = fireworks.length - 1; i >= 0; i--) {
+    fireworks[i].update();
+    fireworks[i].show();
+    
+    if (fireworks[i].done()) {
+      fireworks.splice(i, 1);
     }
-    for (var i = 0; i < fireworks.length; i++)
-    {
-        fireworks[i].update();
-        fireworks[i].show();
-    }
-   
+  }
 }
