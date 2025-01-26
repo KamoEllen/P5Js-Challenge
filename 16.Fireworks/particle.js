@@ -31,7 +31,7 @@ class Particle {
       if (this.lifespan < 0) {
         return true;
       } else {
-        return true
+        return false;
       }
     }
   
