@@ -1,19 +1,41 @@
-var rocket;
+var population;
 
 function setup() {
   createCanvas(400, 400);
   rocket = new Rocket();
+  population = new Population();
 } 
 function draw() {
   background(1);
-  rocket.update();
-  rocket.show();
+  population.run();
+  // pop.show();
+}
+
+function Population()
+{
+  this.rockets = [];
+  this.popsize = 100;
+
+  for (var i = 0; i < this.popsize; i++)
+  {
+    this.rockets[i] = new Rocket();
+  }
+
+  this.run  = function()
+  {
+    for ( var i = 0; i < this.popsize; i++)
+    {
+      this.rockets[i].update();
+      this.rockets[i].show();
+    }
+  }
 }
 
 function Rocket()
 {
   this.pos = createVector(width/2, height);
-  this.vel = createVector(0,-1);
+  // this.vel = createVector(0,-1);
+  this.vel = p5.Vector.random2D();
   this.acc = createVector();
 
 
