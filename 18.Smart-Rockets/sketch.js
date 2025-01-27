@@ -35,8 +35,8 @@ function Rocket()
       translate(this.pos.x, this.pos.y);
       rotate(this.vel.heading());
       rectMode(CENTER);
-      // rect(this.pos.y, this.pos.y,10,50);
-      rect(0,0,50,50);
+     
+      rect(0,0,50,10);
     pop();
 
   }
