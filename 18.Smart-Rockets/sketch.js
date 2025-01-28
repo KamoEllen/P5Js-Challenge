@@ -8,18 +8,24 @@ function setup() {
   rocket = new Rocket();
   population = new Population();
   lifeP = createP();
-  
+  target = createVector(width/2, 50);
 } 
 function draw() {
   background(1);
   population.run();
   // pop.show();
   lifeP.html(count);
-
-
+  if (count == lifespan) //200
+  {
+    population = new Population; //should restart 
+    count = 0; //reset
+  }
+  //next thing being added , reusing rockets that got the closest
+  //to the target n creating new lines from them ,babies
   this.count++
 
-  }
+  ellipse(target.x, target.y , 16,16); //the target the cute little lines are trying to get to
+}
 
 function Population()
 {
