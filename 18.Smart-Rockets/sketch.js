@@ -59,6 +59,17 @@ function Population() {
   } // Fixed: Added missing closing bracket
 
   this.matingpool = []; // generating new array
+  for (var i = 0; i < this.popsize; i++) 
+    {
+      var n = this.rockets[i].fitness *100;
+      for (var j = 0 ; j < n; j++)
+      {
+        this.matingpool.add(this.rockets[i]);
+      }
+      //rocket a is more likely to be picked if its in the 
+      //mating pool 70 times compared to rocket b that is only there 5 times
+  }
+
 
   this.run = function() {
     for (var i = 0; i < this.popsize; i++) {
@@ -91,7 +102,7 @@ function Rocket() {
 
   this.calcFitness = function() {
     var d = dist(this.pos.x, this.pos.y, target.x, target.y); //distance from rocket n the target
-    this.fitness = 1/d; // Fixed: Typo in fitness
+    this.fitness = map(d,0,width,width,0);
   }
 
   this.update = function() {
