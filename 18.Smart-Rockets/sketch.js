@@ -169,7 +169,7 @@ function Rocket(dna) {
   // this.vel = p5.Vector.random2D();
   this.acc = createVector();
   this.completed = false;
-  this.crashed = false;
+  this.crashed = false; // checking if rockets hit canvas with crashed function
   if (dna)
   {
     this.dna = dna;
