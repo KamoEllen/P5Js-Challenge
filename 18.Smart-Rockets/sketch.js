@@ -56,9 +56,9 @@ function Population() {
     for (var i = 0; i < this.popsize; i++) {
       this.rockets[i].fitness /= maxfit;
     }
-  } // Fixed: Added missing closing bracket
 
-  this.matingpool = []; // generating new array
+    //
+    this.matingpool = []; // generating new array
   for (var i = 0; i < this.popsize; i++) 
     {
       var n = this.rockets[i].fitness *100;
@@ -69,6 +69,18 @@ function Population() {
       //rocket a is more likely to be picked if its in the 
       //mating pool 70 times compared to rocket b that is only there 5 times
   }
+  } // Fixed: Added missing closing bracket
+
+
+  this.selction =  function()
+  {
+    var parentA = random(this.matingpool).dna; //using random function on array , dont have to use index
+    var parentB = random(this.matingpool).dna;
+    var child = parentA.crossover(parentB); //using ma n pa dna
+  }
+
+
+  
 
 
   this.run = function() {
@@ -84,7 +96,11 @@ function DNA() {
   for (var i = 0; i < lifespan; i++) {
     this.genes[i] = p5.Vector.random2D();
     this.genes[i].setMag(0.7); //genes weaker movement
+
+
   }
+
+ 
 }
 
 function Rocket() {
