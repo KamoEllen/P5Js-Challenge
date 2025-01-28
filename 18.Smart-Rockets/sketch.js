@@ -7,6 +7,7 @@ var rx = 100;
 var ry = 150;
 var rw = 200;
 var rh = 10;
+var maxforce = 0.2;
 
 function setup() {
   createCanvas(400, 400);
@@ -40,7 +41,7 @@ function draw() {
 
 function Population() {
   this.rockets = [];
-  this.popsize = 100;
+  this.popsize = 50;
   this.matingpool = [];
 
   for (var i = 0; i < this.popsize; i++) {
@@ -123,7 +124,7 @@ function DNA( genes) {
     this.genes = [];
   for (var i = 0; i < lifespan; i++) {
     this.genes[i] = p5.Vector.random2D();
-    this.genes[i].setMag(0.7); //genes weaker movement
+    this.genes[i].setMag(maxforce); //genes weaker movement
 
   }
   
@@ -157,7 +158,7 @@ function DNA( genes) {
       if (random(1) < 0.01)
       {
         this.genes[i] = p5.Vector.random2D();
-        this.genes[i].setMag(0.1);
+        this.genes[i].setMag(maxforce);
       }
     }
   }
@@ -196,7 +197,7 @@ function Rocket(dna) {
     }
     if (this.crashed)
     {
-      this.fitness = 1; // rockets should evolve to go around obstacle
+      this.fitness = 10; // rockets should evolve to go around obstacle
     }
   }
 
@@ -209,6 +210,7 @@ function Rocket(dna) {
       this.completed = true;
       this.pos = target.copy();
     }
+   
 
     if (this.pos.x > rx && this.pos.x < rx + rw &&
        this.pos.y > ry && this.pos.y < ry + rh )
@@ -216,6 +218,17 @@ function Rocket(dna) {
 
       this.crashed = true;
     }
+
+    if (this.pos.y > height || this.pos.y < 0)
+    {
+      this.crashed = true; //height
+    }
+
+    if (this.pos.x > width || this.pos.x < 0)
+    {
+      this.crashed = true; //width
+    }
+
 
     this.applyForce(this.dna.genes[count]);
 
@@ -226,6 +239,7 @@ function Rocket(dna) {
       this.vel.add(this.acc);
     this.pos.add(this.vel);
     this.acc.mult(0);
+    this.vel.limit(4);
     }
   }
 
