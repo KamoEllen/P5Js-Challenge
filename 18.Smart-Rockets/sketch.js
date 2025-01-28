@@ -1,5 +1,5 @@
 var population;
-var lifespan = 200; //each rocket lives 200 frames, its dna will have array will have 200 vectors
+var lifespan = 400; //each rocket lives 200 frames, its dna will have array will have 200 vectors
 var lifeP;
 var count = 0;
 var target;
