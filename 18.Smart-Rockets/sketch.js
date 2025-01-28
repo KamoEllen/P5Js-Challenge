@@ -18,7 +18,9 @@ function draw() {
   lifeP.html(count);
   if (count == lifespan) //200
   {
-    population = new Population(); //should restart 
+    population.evaluate();
+    population.selction();
+    // population = new Population(); //should restart 
     count = 0; //reset
   }
  
@@ -64,7 +66,7 @@ function Population() {
       var n = this.rockets[i].fitness *100;
       for (var j = 0 ; j < n; j++)
       {
-        this.matingpool.add(this.rockets[i]);
+        this.matingpool.push(this.rockets[i]);
       }
       //rocket a is more likely to be picked if its in the 
       //mating pool 70 times compared to rocket b that is only there 5 times
@@ -74,9 +76,15 @@ function Population() {
 
   this.selction =  function()
   {
-    var parentA = random(this.matingpool).dna; //using random function on array , dont have to use index
+    var newRockets = [];
+    for (var i = 0; i < this.rockets.length;i++)
+    {
+        var parentA = random(this.matingpool).dna; //using random function on array , dont have to use index
     var parentB = random(this.matingpool).dna;
     var child = parentA.crossover(parentB); //using ma n pa dna
+    newRockets[i] = new Rocket(child);
+    }
+  this.rockets = newRockets;
   }
 
 
@@ -91,24 +99,59 @@ function Population() {
   }
 }
 
-function DNA() {
-  this.genes = [];
+function DNA( genes) { 
+  //can recieve genes n make new genes , or create new random genes
+  if (genes)
+  {
+    this.genes = genes;
+  }
+  else
+  {
+    this.genes = [];
   for (var i = 0; i < lifespan; i++) {
     this.genes[i] = p5.Vector.random2D();
     this.genes[i].setMag(0.7); //genes weaker movement
 
+  }
+  
 
   }
 
- 
+  this.crossover = function(partner)
+  {
+    var newgenes =  [];
+    var mid = floor(random(this.genes.length));
+    for ( var i = 0; i < this.genes.length;i++) //reminds me of binary search
+    {
+      if (i > mid)
+      {
+        newgenes[i] = this.genes[i];
+      }
+      else
+      {
+        newgenes[i] = partner.genes[i];
+      }
+     
+
+    }
+    return new DNA(newgenes);
+  }
 }
 
-function Rocket() {
+function Rocket(dna) {
   this.pos = createVector(width/2, height);
   this.vel = createVector();
   // this.vel = p5.Vector.random2D();
   this.acc = createVector();
-  this.dna = new DNA();
+  if (dna)
+  {
+    this.dna = dna;
+  }
+  else
+  {
+    this.dna = new DNA();
+  }
+  
   // this.count = 0;
   this.fitness = 0;
 
