@@ -2,7 +2,11 @@ var population;
 var lifespan = 200; //each rocket lives 200 frames, its dna will have array will have 200 vectors
 var lifeP;
 var count = 0;
-
+var target;
+var rx = 100;
+var ry = 150;
+var rw = 200;
+var rh = 10;
 
 function setup() {
   createCanvas(400, 400);
@@ -17,6 +21,7 @@ function draw() {
   population.run();
   // pop.show();
   lifeP.html(count);
+  count++; // Fixed: the global count variable
   if (count == lifespan) //200
   {
     population.evaluate();
@@ -24,8 +29,11 @@ function draw() {
     // population = new Population(); //should restart 
     count = 0; //reset
   }
+  //obstacle 
+  fill(255);
+  rect(100,150,200,10); //x = 100, y = 150 , 150 pixels across, 10 pixels wide
  
-  count++; // Fixed: the global count variable
+ 
 
   ellipse(target.x, target.y , 16,16); //the target the cute little lines are trying to get to
 }
@@ -161,6 +169,7 @@ function Rocket(dna) {
   // this.vel = p5.Vector.random2D();
   this.acc = createVector();
   this.completed = false;
+  this.crashed = false;
   if (dna)
   {
     this.dna = dna;
@@ -180,9 +189,14 @@ function Rocket(dna) {
   this.calcFitness = function() {
     var d = dist(this.pos.x, this.pos.y, target.x, target.y); //distance from rocket n the target
     this.fitness = map(d,0,width,width,0);
+
     if (this.completed)
     {
       this.fitness*=10;
+    }
+    if (this.crashed)
+    {
+      this.fitness = 1; // rockets should evolve to go around obstacle
     }
   }
 
@@ -196,11 +210,18 @@ function Rocket(dna) {
       this.pos = target.copy();
     }
 
+    if (this.pos.x > rx && this.pos.x < rx + rw &&
+       this.pos.y > ry && this.pos.y < ry + rh )
+    {
+
+      this.crashed = true;
+    }
+
     this.applyForce(this.dna.genes[count]);
 
     // this.count++;
 
-    if (!this.completed) //only update physics engine if goal incomplete
+    if (!this.completed && !this.crashed) //only update physics engine if goal incomplete
     {
       this.vel.add(this.acc);
     this.pos.add(this.vel);
