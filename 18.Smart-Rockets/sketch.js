@@ -1,15 +1,25 @@
 var population;
+var lifespan = 200; //each rocket lives 200 frames, its dna will have array will have 200 vectors
+var lifeP;
+var count = 0;
 
 function setup() {
   createCanvas(400, 400);
   rocket = new Rocket();
   population = new Population();
+  lifeP = createP();
+  
 } 
 function draw() {
   background(1);
   population.run();
   // pop.show();
-}
+  lifeP.html(count);
+
+
+  this.count++
+
+  }
 
 function Population()
 {
@@ -31,12 +41,28 @@ function Population()
   }
 }
 
+
+function DNA()
+{
+  this.genes = [];
+  for (var i = 0; i < lifespan; i++)
+    {
+      this.genes[i] = p5.Vector.random2D();
+      this.genes[i].setMag(0.7); //genes weaker movement
+
+    }
+  
+ 
+}
+
 function Rocket()
 {
   this.pos = createVector(width/2, height);
-  // this.vel = createVector(0,-1);
-  this.vel = p5.Vector.random2D();
+  this.vel = createVector();
+  // this.vel = p5.Vector.random2D();
   this.acc = createVector();
+  this.dna = new DNA();
+  // this.count = 0;
 
 
   this.applyForce = function(force) 
@@ -46,6 +72,9 @@ function Rocket()
 
   this.update = function()
   {
+    this.applyForce(this.dna.genes[count]);
+    // this.count++;
+
       this.vel.add(this.acc);
       this.pos.add(this.vel);
       this.acc.mult(0);
