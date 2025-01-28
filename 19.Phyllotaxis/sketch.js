@@ -20,7 +20,7 @@ function setup() {
   }
   
   function draw() {
-    var a = n * 137.3;
+    var a = n * 137.5;
     var r = c * sqrt(n);
 
     var x = r * cos(a) + width/2;
