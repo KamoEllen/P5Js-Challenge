@@ -3,6 +3,7 @@ var lifespan = 200; //each rocket lives 200 frames, its dna will have array will
 var lifeP;
 var count = 0;
 
+
 function setup() {
   createCanvas(400, 400);
   rocket = new Rocket();
@@ -54,6 +55,9 @@ function Population() {
         maxfit = this.rockets[i].fitness;
       }
     }
+
+    createP(maxfit); //max fitness is going up :)
+    // console.log(this.rockets);
 
     for (var i = 0; i < this.popsize; i++) {
       this.rockets[i].fitness /= maxfit;
@@ -143,6 +147,7 @@ function Rocket(dna) {
   this.vel = createVector();
   // this.vel = p5.Vector.random2D();
   this.acc = createVector();
+  this.completed = false;
   if (dna)
   {
     this.dna = dna;
@@ -162,15 +167,32 @@ function Rocket(dna) {
   this.calcFitness = function() {
     var d = dist(this.pos.x, this.pos.y, target.x, target.y); //distance from rocket n the target
     this.fitness = map(d,0,width,width,0);
+    if (this.completed)
+    {
+      this.fitness*=10;
+    }
   }
 
   this.update = function() {
+
+    var d = dist(this.pos.x,this.pos.y , target.x,target.y);
+    if (d < 10)
+    {
+      //then it reached target
+      this.completed = true;
+      this.pos = target.copy();
+    }
+
     this.applyForce(this.dna.genes[count]);
+
     // this.count++;
 
-    this.vel.add(this.acc);
+    if (!this.completed) //only update physics engine if goal incomplete
+    {
+      this.vel.add(this.acc);
     this.pos.add(this.vel);
     this.acc.mult(0);
+    }
   }
 
   this.show = function() {
