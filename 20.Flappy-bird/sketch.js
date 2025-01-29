@@ -2,24 +2,38 @@ var bird;
 var pipes = [];
 
 function setup() {
-    createCanvas(600, 400);
-    bird = new Bird();
-    pipes.push(new Pipe());
+  createCanvas(640, 480);
+  bird = new Bird();
+  pipes.push(new Pipe());
 }
 
 function draw() {
-    background(51);
-    bird.update();
-    bird.show();
+  background(0);
 
-    for (var i = 0; i < pipes.length; i++) {
-        pipes[i].show();
-        pipes[i].update();
+  for (var i = pipes.length-1; i >= 0; i--) {
+    pipes[i].show();
+    pipes[i].update();
+
+    if (pipes[i].hits(bird)) {
+      console.log("HIT");
     }
+
+    if (pipes[i].offscreen()) {
+      pipes.splice(i, 1);
+    }
+  }
+
+  bird.update();
+  bird.show();
+
+  if (frameCount % 75 == 0) {
+    pipes.push(new Pipe());
+  }
 }
 
 function keyPressed() {
-    if (key == ' ') { // if space bar was pressed
-        bird.up();
-    }
-}    
+  if (key == ' ') {
+    bird.up();
+    
+  }
+}

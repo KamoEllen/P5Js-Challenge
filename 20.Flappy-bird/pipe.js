@@ -1,31 +1,44 @@
 function Pipe() {
-    // Gap between top and bottom pipes
-    this.gap = 100; 
-    let gapPosition = random(this.gap, height - this.gap);
-
-    // Top pipe height
-    this.top = gapPosition - this.gap / 2;
-    // Bottom pipe height
-    this.bottom = height - (gapPosition + this.gap / 2);
-
-
+    this.spacing = 175;
+    this.top = random(height / 6, 3 / 4 * height);
+    this.bottom = height - (this.top + this.spacing);
     this.x = width;
-    this.w = 20; 
-    this.speed = 5;
-
+    this.w = 80;
+    this.speed = 6;
   
-    this.show = function () {
-        fill(255);
-
-        // Top pipe
-        rect(this.x, 0, this.w, this.top);
-
-        // Bottom pipe
-        rect(this.x, height - this.bottom, this.w, this.bottom);
-    };
-
-
-    this.update = function () {
-        this.x -= this.speed;
-    };
-}
+    this.highlight = false;
+  
+    this.hits = function(bird) {
+      if (bird.y < this.top || bird.y > height - this.bottom) {
+        if (bird.x > this.x && bird.x < this.x + this.w) {
+          this.highlight = true;
+          return true;
+        }
+      }
+      this.highlight = false;
+      return false;
+    }
+  
+    this.show = function() {
+      fill(255);
+      if (this.highlight) {
+        fill(255, 0, 0);
+      }
+      rect(this.x, 0, this.w, this.top);
+      rect(this.x, height - this.bottom, this.w, this.bottom);
+    }
+  
+    this.update = function() {
+      this.x -= this.speed;
+    }
+  
+    this.offscreen = function() {
+      if (this.x < -this.w) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  
+  
+  }
