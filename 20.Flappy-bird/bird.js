@@ -1,35 +1,33 @@
-function Bird()
-{
-    this.y = width/2;
+function Bird() {
+    this.y = height / 2;
     this.x = 65;
 
-    this.gravity = 1;
+    this.gravity = 0.6; 
     this.velocity = 0;
+    this.lift = -10; 
 
-    this.show = function()
-    {
+    this.show = function() {
         fill(255);
-        ellipse(this.x, this.y,26,26);
+        ellipse(this.x, this.y, 26, 26);
     }
 
-    this.update = function()
-    {
+    this.up = function() {
+        this.velocity += this.lift;
+    }
+
+    this.update = function() {
         this.velocity += this.gravity;
         this.y += this.velocity;
 
-        //bottom of canvas
-        if (this.y > height) //bird hits bottom canvas , does not pass thru 
-        {
-            this.y = heaight;
+        // Bottom of canvas
+        if (this.y > height) { // bird hits bottom canvas, does not pass through
+            this.y = height;
             this.velocity = 0;
         }
-        //top of canvas
-        if (this.y< 0)
-        {
+        // Top of canvas
+        if (this.y < 0) {
             this.y = 0;
-            this.velocity =0;
+            this.velocity = 0;
         }
-
-
     }
 }
