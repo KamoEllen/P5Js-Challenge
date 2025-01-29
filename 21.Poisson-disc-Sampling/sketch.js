@@ -1,114 +1,89 @@
-var r = 10; //radius
-var k = 30; //constant k , limit
+var r = 4;
+var k = 30;
 var grid = [];
-// var w = r / sqrt(2);
 var w = r / Math.sqrt(2);
 var active = [];
-//points are in cells on the grid , find the one closest to the active poit 
-//by checking the contents of the closest cells
+var cols, rows;
+var ordered = [];
+
 function setup() {
-    createCanvas(409, 400);
-    background(0);
-    strokeWeight(4);
+  createCanvas(400, 400);
+  background(0);
+  strokeWeight(4);
+  colorMode(HSB);
 
-    //step 0
-    var cols = floor(width/w);
-    var rows = floor(height/w);
-    for (var  i = 0; i < cols * rows ; i++)
-    {
-        grid[i] = -1;
-    }
-
-    //step 1
-    var x = random(width);
-    var y = random(height);
-    var i = floor(x/ w);
-    var j = floor(y / w);
-    var pos = createVector(x,y);
-    grid[i+j * cols] = pos;
-    active.push(pos);
-
-    
-
+  // STEP 0
+  cols = floor(width / w);
+  rows = floor(height / w);
+  for (var i = 0; i < cols * rows; i++) {
+    grid[i] = undefined;
   }
-  
-  function draw() {
 
-    if (active.length > 0)
-    {
-        var randIndex = floor(random(active.length));
+  // STEP 1
+  var x = width / 2;
+  var y = height / 2;
+  var i = floor(x / w);
+  var j = floor(y / w);
+  var pos = createVector(x, y);
+  grid[i + j * cols] = pos;
+  active.push(pos);
 
-        var pos = active[randIndex]; 
-        var found = false; 
+}
 
-        for ( var n = 0; n < k; n++)
-        {
-            // var a = random(TWO_PI);
+function draw() {
+  background(0);
 
-            // var offsetX = cos(a); //with angle we can find size,position
-            // var offsetY = sin(a);
 
-            var sample = p5.Vector.random2D();
-            var  m = random(r, 2 * r);
-            sample.setMag(m);//set magnitud
-            // sample.setMag(m);
-            
+  for (var total = 0; total < 25; total++) {
+    if (active.length > 0) {
+      var randIndex = floor(random(active.length));
+      var pos = active[randIndex];
+      var found = false;
+      for (var n = 0; n < k; n++) {
+        var sample = p5.Vector.random2D();
+        var m = random(r, 2 * r);
+        sample.setMag(m);
+        sample.add(pos);
 
-            sample.add(pos);
+        var col = floor(sample.x / w);
+        var row = floor(sample.y / w);
 
-            var col = floor(sample.x / w);
-            var rorw =floor(sample.y / w);
-
-            var ok = true; //distnce
-
-            for (var i = -1; i <= 1; i++)
-            {
-                for (var j = -1; j <= 1; j++)
-                {
-                    var neighbor = grid[i + j] * cols;
-                    var d = p5.Vector.dist(sample,neighbor);
-
-                    if ( d < r)
-                    {//if theres nothing there 
-                        ok = false;
-                       
-                    }
+        if (col > -1 && row > -1 && col < cols && row < rows && !grid[col + row * cols]) {
+          var ok = true;
+          for (var i = -1; i <= 1; i++) {
+            for (var j = -1; j <= 1; j++) {
+              var index = (col + i) + (row + j) * cols;
+              var neighbor = grid[index];
+              if (neighbor) {
+                var d = p5.Vector.dist(sample, neighbor);
+                if (d < r) {
+                  ok = false;
                 }
+              }
             }
-
-
-        }
-        if (ok)
-        {
+          }
+          if (ok) {
             found = true;
             grid[col + row * cols] = sample;
-            active.push(sample); // might use the point to pick a point next to it
-            // break;
+            active.push(sample);
+            ordered.push(sample);
+            break;
+          }
         }
-    }
+      }
 
-    if (!found)
-    {
-        active.splice(randIndex,1);
-    }
+      if (!found) {
+        active.splice(randIndex, 1);
+      }
 
-
-
-    background(0);
-    for ( var i = 0; i < grid.length; i++)
-    {
-        if ( grid[i]!= -1)
-        {
-            stroke(255);
-            strokeWeight(4);
-            point(grid[i].x, grid[i].y);
-        }
-    }
-
-    for ( var i = 0; i < active.length;  i++)
-    {
-        stroke(255, 0, 255);
-        strokeWeight(4);
-        point(active[i].x , active[i].y);
     }
   }
+
+  for (var i = 0; i < ordered.length; i++) {
+    if (ordered[i]) {
+      stroke(i % 360, 100, 100);
+      strokeWeight(r * 0.5);
+      point(ordered[i].x, ordered[i].y);
+    }
+  }
+}
