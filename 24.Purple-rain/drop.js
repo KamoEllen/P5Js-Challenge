@@ -9,6 +9,11 @@ class Drop {
 
     fall() {
    this.y = this.y + this.yspeed; 
+
+   if (this.y > height )
+   {
+    this.y = random(-200,-100);
+   }
     }
 
     show() {
