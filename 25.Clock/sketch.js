@@ -18,9 +18,10 @@ function draw() {
     // ellipse(200,200,200,200);
 
     strokeWeight(8);
+    noFill();
     stroke(255,100,150);
-    let end = map(mouseX,0,width,0,360);
-    arc(200,200,200,200,0,end);//0-360 , complete circle
+    let end = map(sc,0,60,0,360);
+    arc(200,200,200,200,0,180);//0-360 , complete circle
 
     // fill(255);
     // noStroke();
