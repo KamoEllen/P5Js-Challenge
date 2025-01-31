@@ -8,26 +8,21 @@ function draw() {
     translate(200,200);
     rotate(-90);
     
-    //displays corect time
-
+    //displays corect tim
     let hr = hour();
     let mn = minute();
     let sc = second();
-
-    // strokeWeight(4);
-    // stroke(255);
-    // noFill();
-    // ellipse(200,200,200,200);
 
     strokeWeight(8);
     noFill();
     stroke(255,100,150);
 
     //when second gets to 60 , minute goes up by 1
+
     //seconds
     stroke(100,230,150);
     let secondAngle = map(sc,0,60,0,360);
-    arc(0,0,150,150,0,secondAngle);//0-360 , complete circle
+    arc(0,0,150,150,0,secondAngle);
 
     push();
     rotate(secondAngle);
@@ -38,7 +33,7 @@ function draw() {
     //minutes
     stroke(230,150,180);
     let minAngle = map(mn,0,60,0,360);
-    arc(0,0,289,280,0,minAngle);//0-360 , complete circle
+    arc(0,0,289,280,0,minAngle);
 
     push();
     rotate(minAngle);
@@ -49,7 +44,7 @@ function draw() {
     //hour
     stroke(150,100,255);
     let hourAngle = map(hr %12,0,12,0,360);
-    arc(0,0,200,200,0,hourAngle);//0-360 , complete circle
+    arc(0,0,200,200,0,hourAngle);
 
     push();
     rotate(hourAngle);
@@ -57,9 +52,8 @@ function draw() {
     line(0,0,100,0);
     pop();
 
+    //adding dot in the middle
+    stroke(255);
+    point(0,0);
 
-
-    // fill(255);
-    // noStroke();
-    // text(hr + ":" + mn  + ":" + sc , 10,200);
 }
