@@ -2,7 +2,7 @@
 //array with many drops
 class Drop {
     constructor() {
-        this.x = width/2;
+        this.x = random(width);
         this.y = 0;
         this.yspeed =1;
     }
