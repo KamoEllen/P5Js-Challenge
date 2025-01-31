@@ -4,7 +4,7 @@ class Drop {
     constructor() {
         this.x = random(width);
         this.y = random(-200,200);
-        this.yspeed =1;
+        this.yspeed = random(4,10);
     }
 
     fall() {
