@@ -12,14 +12,15 @@ function draw() {
     let mn = minute();
     let sc = second();
 
-    strokeWeight(8);
-    stroke(255);
-    noFill();
-    ellipse(200,200,200,200);
+    // strokeWeight(4);
+    // stroke(255);
+    // noFill();
+    // ellipse(200,200,200,200);
 
-    strokeWeight(4);
+    strokeWeight(8);
     stroke(255,100,150);
-    arc(200,200,200,200,0,360);//0-360 , complete circle
+    let end = map(mouseX,0,width,0,360);
+    arc(200,200,200,200,0,end);//0-360 , complete circle
 
     // fill(255);
     // noStroke();
