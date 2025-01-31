@@ -8,11 +8,11 @@ class Drop {
     }
 
     fall() {
-   y = y + yspeed;
+   this.y = this.y + this.yspeed; 
     }
 
     show() {
      stroke(138,43,226);
-     lifeP(this.x,this.y,this.x,this.y+10)
+     line(this.x, this.y, this.x, this.y + 10);
     }
 }
