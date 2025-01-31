@@ -2,7 +2,7 @@ let drops = [];
 
 function setup() {
     createCanvas(640, 360);
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 500; i++) {
         drops.push(new Drop());
     }
 }
