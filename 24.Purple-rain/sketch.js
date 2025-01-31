@@ -1,7 +1,8 @@
-function setup() {
-    createCanvas(400, 400);
-  }
-  
-  function draw() {
-    background(51);
-  }
+void setup()
+{
+    size(640, 360);
+}
+void draw()
+{
+    background(230,230,250);
+}
