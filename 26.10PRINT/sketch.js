@@ -23,6 +23,6 @@ function draw() {
     if (x > width)
     {
       x = 0;
-      y = y + 10;
+      y = y + spacing;
     }
 }
