@@ -1,5 +1,7 @@
 let x = 0
 let y = 0;
+let spacing= 10;
+
 function setup() {
   createCanvas(400, 400);
   background(0);
@@ -10,12 +12,12 @@ function draw() {
 
   if ( random(1) < 0.5)
   {
-   line(x,y, x+10,y+10); 
+   line(x,y, x+spacing,y+spacing); 
   }
   else 
     {
-      line(x,y+10,x+10,y);
+      line(x,y+spacing,x+spacing,y);
     }
-    x = x+ 10;
-    y = y + 10;
+    x = x+ spacing;
+    // y = y + 10;
 }
