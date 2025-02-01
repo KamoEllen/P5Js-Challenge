@@ -19,5 +19,10 @@ function draw() {
       line(x,y+spacing,x+spacing,y);
     }
     x = x+ spacing;
-    // y = y + 10;
+    
+    if (x > width)
+    {
+      x = 0;
+      y = y + 10;
+    }
 }
