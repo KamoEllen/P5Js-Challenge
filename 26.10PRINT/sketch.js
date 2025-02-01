@@ -5,6 +5,13 @@ function setup() {
   
   function draw() {
     stroke(120,230,52);
-    line(0,0,10,10);
-    line(0,10,10,0);
+
+    if ( random(1) < 0.5)
+    {
+     line(0,0,10,10); 
+    }
+    else 
+      {
+        line(0,10,10,0);
+      }
   }
