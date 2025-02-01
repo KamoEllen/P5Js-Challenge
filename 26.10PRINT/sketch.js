@@ -17,4 +17,5 @@ function draw() {
       line(x,y+10,x+10,y);
     }
     x = x+ 10;
+    y = y + 10;
 }
