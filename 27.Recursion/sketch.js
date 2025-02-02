@@ -1,8 +1,12 @@
+// self reference
 function setup() {
-    createCanvas(400, 400);
+    createCanvas(600, 400);
    
   }
   
   function draw() {
     background(100,255,180);
+    stroke(255);
+    noFill();
+    ellipse(300,200,300);
   }  
