@@ -8,5 +8,10 @@ function setup() {
     background(100,255,180);
     stroke(255);
     noFill();
-    ellipse(300,200,300);
+    drawCircle(300,200,300)
   }  
+
+  function drawCircle()
+  {
+    ellipse(x,y,z);
+  }
