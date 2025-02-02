@@ -14,5 +14,9 @@ function setup() {
   function drawCircle(x,y,z)
   {
     ellipse(x,y,z);
-    drawCircle(x+20,y,z);
+    if (x < width)
+    {
+      drawCircle(x+20,y,z);  
+    }
+    
   }
