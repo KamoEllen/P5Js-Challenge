@@ -8,7 +8,7 @@ function setup() {
     background(100,255,180);
     stroke(255);
     noFill();
-    drawCircle(300,200,300)
+    drawCircle(300,200 , mouseX);
   }  
 
   function drawCircle(x,y,z)
@@ -18,8 +18,6 @@ function setup() {
     {
         //right
       drawCircle(x+z * 0.5,y,z * 0.5); 
-      //moving circle according to diameter shrnk size 
-       // diameter shrinks [z * 0.5]
        //left
        drawCircle(x - z * 0.5,y,z * 0.5); 
        //makes a sierpinski triangle.A fractal, or infinite pattern, that's shaped like an equilateral triangle.
