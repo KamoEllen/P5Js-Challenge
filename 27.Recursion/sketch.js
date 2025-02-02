@@ -11,7 +11,8 @@ function setup() {
     drawCircle(300,200,300)
   }  
 
-  function drawCircle()
+  function drawCircle(x,y,z)
   {
     ellipse(x,y,z);
+    drawCircle(x+20,y,z);
   }
