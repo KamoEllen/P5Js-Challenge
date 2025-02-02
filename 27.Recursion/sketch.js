@@ -14,9 +14,11 @@ function setup() {
   function drawCircle(x,y,z)
   {
     ellipse(x,y,z);
-    if (x < width)
+    if (z > 2)
     {
-      drawCircle(x+20,y,z);  
+      drawCircle(x+z * 0.5,y,z * 0.5); 
+      //moving circle according to diameter shrnk size 
+       // diameter shrinks [z * 0.5]
     }
     
   }
