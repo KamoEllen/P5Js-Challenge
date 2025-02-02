@@ -12,6 +12,7 @@ function setup() {
    for (let i = 0; i < particles.length;i++)
     {
        particles[i].show(); 
+       particles[i].update();
     } 
     
   }
@@ -22,6 +23,8 @@ function setup() {
     {
         this.x = 300;
         this.y = 380;
+        this.vx = random(-1,1);
+        this.vy = random(-5,-1);
     }
     show()
     {
@@ -30,6 +33,12 @@ function setup() {
        //particle 
         ellipse(this.x , this.y , 46);
 
+
+    }
+    update()
+    {
+        this.x += this.vx;
+        this.y += this.vy;
 
     }
   }
