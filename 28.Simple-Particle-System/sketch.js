@@ -28,18 +28,20 @@ function setup() {
         this.y = 380;
         this.vx = random(-1,1);
         this.vy = random(-5,-1);
+        this.alpha = 255;
     }
 
     update()
     {
         this.x += this.vx;
         this.y += this.vy;
+        this.alpha -= 5; //fade effect
 
     }
     show()
     {
         stroke(255);
-       fill(255,10); 
+       fill(255,this.alpha); 
        //particle 
         ellipse(this.x , this.y , 46);
 
