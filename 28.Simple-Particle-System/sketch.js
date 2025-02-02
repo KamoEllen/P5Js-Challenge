@@ -15,6 +15,13 @@ function setup() {
     {
         particles[i].update();
        particles[i].show(); 
+
+       if (particles[i].finish())
+       {
+        //remove particle
+        particles.splice(i,1);
+
+       }
        
     } 
     
@@ -31,6 +38,11 @@ function setup() {
         this.alpha = 255;
     }
 
+    finish()
+    {
+        return this.alpha < 0; //true or false response
+    }
+
     update()
     {
         this.x += this.vx;
@@ -41,9 +53,10 @@ function setup() {
     show()
     {
         stroke(255);
+        // noStroke();
        fill(255,this.alpha); 
        //particle 
-        ellipse(this.x , this.y , 46);
+        ellipse(this.x , this.y , 16);
 
 
     }
