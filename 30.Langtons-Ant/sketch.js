@@ -54,11 +54,24 @@ function moveForward() {
 }
 
 function draw() {
-  background(220);
-  stroke(0);
   strokeWeight(1);
-  point(x, y);
-  moveForward();
+  for (let n = 0; n < 100; n++) {
+    let state = grid[x][y];
+    if (state == 0) {
+      turnRight();
+      grid[x][y] = 1;
+    } else if (state == 1) {
+      turnLeft();
+      grid[x][y] = 0;
+    }
+    
+    stroke(color(255));
+    if (grid[x][y] == 1) {
+      stroke(color(0));
+    }
+    point(x, y);
+    moveForward();
+  }
 }
 
 function make2DArray(cols, rows) {
