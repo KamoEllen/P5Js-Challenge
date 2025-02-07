@@ -10,13 +10,23 @@ function preload() {
 
 function setup() {
   createCanvas(640, 480);
+
+  // make multiple horse 
+  for (let i = 0; i < 5; i++) {
+    horses[i] = new Sprite(animation, 0, i * 75, random(0.1, 0.4));
+  }
 }
 
 function draw() {
   background(0);
+
+  // show and animate each horse
+  for (let horse of horses) {
+    horse.show();
+    horse.animate();
+  }
 }
 
-//animation handle
 class Sprite {
   constructor(animation, x, y, speed) {
     this.animation = animation;
@@ -34,6 +44,6 @@ class Sprite {
 
   animate() {
     this.index += this.speed;
-    this.x += this.speed * 2; // horizontal move
+    this.x += this.speed * 2; 
   }
 }
