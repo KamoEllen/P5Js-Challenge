@@ -3,8 +3,8 @@ var tree;
 function setup() {
     createCanvas(200, 200);
     tree = new Tree();
-    var n = new Node(5);
-    tree.addNode(n);
+    tree.addValue();
+    // tree.addNode(new Node(5));
 }
 
 class Tree {
