@@ -1,7 +1,12 @@
+let animation = [];
+let horses = [];
+
+function preload() {}
+
 function setup() {
-    createCanvas(200, 200);
+  createCanvas(640, 480);
 }
-function draw()
-{
-    background(0);
+
+function draw() {
+  background(0);
 }
