@@ -1,4 +1,5 @@
 let animation = [];
+let horses = [];
 
 function preload() {
   for (let i = 0; i <= 6; i++) {
@@ -13,6 +14,26 @@ function setup() {
 
 function draw() {
   background(0);
-  //this is to show first frame of the animation
-  image(animation[0], 0, 0);
+}
+
+//animation handle
+class Sprite {
+  constructor(animation, x, y, speed) {
+    this.animation = animation;
+    this.len = this.animation.length;
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
+    this.index = 0;
+  }
+
+  show() {
+    let index = floor(this.index) % this.len;
+    image(this.animation[index], this.x, this.y);
+  }
+
+  animate() {
+    this.index += this.speed;
+    this.x += this.speed * 2; // horizontal move
+  }
 }
