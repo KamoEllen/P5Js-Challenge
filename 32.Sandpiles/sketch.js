@@ -29,7 +29,7 @@ function topple() {
     }
   }
 
-  // Process toppling
+  //toppling
   for (let x = 0; x < width; x++) {
     for (let y = 0; y < height; y++) {
       let num = sandpiles[x][y];
