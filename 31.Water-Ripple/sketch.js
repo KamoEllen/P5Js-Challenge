@@ -4,4 +4,6 @@ function setup() {
 
 function draw() {
     background(20, 30, 50);
+    ripples[i].update();
+    ripples[i].show();
 }
