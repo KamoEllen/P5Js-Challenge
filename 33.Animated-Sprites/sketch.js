@@ -10,8 +10,6 @@ function preload() {
 
 function setup() {
   createCanvas(640, 480);
-
-  // make multiple horse 
   for (let i = 0; i < 5; i++) {
     horses[i] = new Sprite(animation, 0, i * 75, random(0.1, 0.4));
   }
@@ -19,8 +17,6 @@ function setup() {
 
 function draw() {
   background(0);
-
-  // show and animate each horse
   for (let horse of horses) {
     horse.show();
     horse.animate();
@@ -45,5 +41,9 @@ class Sprite {
   animate() {
     this.index += this.speed;
     this.x += this.speed * 2; 
+    
+    if (this.x > width) {
+      this.x = -this.animation[0].width;
+    }
   }
 }
