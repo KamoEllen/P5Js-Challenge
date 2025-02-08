@@ -11,28 +11,29 @@ function setup() {
   var xoff = 0;
   //right wing
   beginShape();
-  for (var a = -PI / 2; a <= PI / 2; a += delta_angle) {
+  for (var a = -PI / 2; a <= PI / 2; a += delta_angle) { //fix 
     var n = noise(xoff);
-    var r = map(n, 0, 1, 50, 125);
+    var r = map(n, 0, 1, 50, 100);
     var x = r * cos(a);
     var y = r * sin(a);
     xoff += 0.1;
     vertex(x, y);
   }
-  endShape();
+  //want to make left and right wing combine , theres spae seperating them
+//   endShape();
   //left wing
-  var xoff = 0;
-  beginShape();
+//   var xoff = 0; //fix
+//   beginShape();
   for (
-    var a = -PI / 2;
-    a > (-3 * PI) / 2;
-    a -= delta_angle //3
+    var a = PI / 2;
+    a < (3 * PI) / 2;
+    a += delta_angle 
   ) {
     var n = noise(xoff);
-    var r = map(n, 0, 1, 50, 125);
+    var r = map(n, 0, 1, 50, 100);
     var x = r * cos(a);
     var y = r * sin(a);
-    xoff += 0.1;
+    xoff -= 0.1;
 
     vertex(x, y);
   }
