@@ -5,17 +5,20 @@ function setup() {
 
     var r = 100;
     beginShape();
+    var xoff= 0; 
     for (var a = -PI/2 ; a < PI/2 ; a+= 0.1 )
     {
-       
+        var n = noise(xoff);
+       var r = map(n,0,1,50,125);
         var x = r * cos(a);
         var y = r * sin(a);
+        xoff +=0.2;
         stroke(255);
         fill(200,50);
         strokeWeight(1);
         // point(x,y);
         vertex(x,y);
-        r--; //making wing
+        // r--; //making wing
     }
     endShape();
 }
