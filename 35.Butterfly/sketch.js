@@ -14,7 +14,7 @@ function setup() {
   for (var a = -PI / 2; a <= PI / 2; a += delta_angle) { //fix 
     var n = noise(xoff);
     // var r = map(n, 0, 1, 50, 100); //noise
-    var r = cos(2*a) * map(n, 0, 1, 50, 100);
+    var r = sin(2*a) * map(n, 0, 1, 50, 100);
     var x = r * cos(a);
     var y = r * sin(a);
     xoff += 0.1;
@@ -32,7 +32,7 @@ function setup() {
   ) {
     var n = noise(xoff);
     // var r = map(n, 0, 1, 50, 100);
-    var r = cos(2*a) *  map(n, 0, 1, 50, 100);;
+    var r = sin(2*a) *  map(n, 0, 1, 50, 100);;
     var x = r * cos(a);
     var y = r * sin(a);
     xoff -= 0.1;
