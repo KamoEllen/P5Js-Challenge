@@ -1,11 +1,27 @@
-let num = "11111111";
+let num = "00101111";
+let byte = [];
+
 function setup() {
     createCanvas(400, 400);
     binaryToDecimal(num);
+
+
+    let w = width/8;
+    for (let i =  0; i < 8; i++)
+    {
+        // let bit = new Bit(i*w , 50,w);
+        byte[i] = new Bit(w/2+i * w , 50,w-4);
+        byte[i].setState(num.charAt(i));
+
+    }
   }
   
   function draw() {
-    // background(200, 200, 30); //yellow 
+    background(200, 200, 30); //yellow 
+    for (let i =  0; i < 8; i++)
+        { 
+            byte[i].show();
+        }
   }
   function binaryToDecimal(val)
   {

@@ -1,11 +1,16 @@
 class Bit 
 {
-    constructor()
+    constructor(x,y,d)
     {
-        this.x = 0;
-        this.y = 0;
-        this.diameter = 0;
+        this.x = x;
+        this.y = y;
+        this.diameter = d;
         this.state =0;
+    }
+
+    setState(state)
+    {
+        this.state= parseInt(state);
     }
 
     show()
