@@ -9,7 +9,7 @@ function setup() {
     noFill();
     stroke(255);
     beginShape();
-    for (var a = 0; a < TWO_PI; a+=0.01)
+    for (var a = 0; a < TWO_PI; a+=TWO_PI/6)
     {
         var r = 100;
         var x = r * cos(a);
