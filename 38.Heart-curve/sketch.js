@@ -9,11 +9,12 @@ function setup() {
     noFill();
     stroke(255);
     beginShape();
-    for (var a = 0; a < TWO_PI; a+=TWO_PI/6)
+    for (var a = 0; a < TWO_PI; a+=0.01)
     {
-        var r = 100;
-        var x = r * cos(a);
-        var y = r * sin(a);
+        var r = 1;
+        var x = 16 * pow(sin(a),3) ;
+        
+        var y = -1 * (13 * cos(a)  - 5* cos(2 * a) - 2 * cos(3 * a) - cos(4* a));
         vertex(x,y);
     }
     endShape();
