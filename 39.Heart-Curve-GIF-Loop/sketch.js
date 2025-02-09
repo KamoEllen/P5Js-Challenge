@@ -1,5 +1,7 @@
 const heart = [];
 let a = 0;
+let beatScale = 1; 
+let beatSpeed = 0.05; 
 
 function setup() {
   createCanvas(400, 400);
@@ -9,6 +11,9 @@ function draw() {
   background(50, 50, 20); //keeping bg color
   translate(width / 2, height / 2); 
 
+  beatScale = 1 + 0.1 * sin(frameCount * beatSpeed);
+  scale(beatScale);
+  
   stroke(255);
   strokeWeight(2);
   fill(255, 30, 30); //red
@@ -25,7 +30,7 @@ function draw() {
   heart.push(createVector(x, y));
 
   if (a > TWO_PI) {
-    noLoop();
+    loop(); //loop continues
   }
 
   a += 0.01;
