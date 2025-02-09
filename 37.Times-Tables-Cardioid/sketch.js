@@ -1,6 +1,6 @@
 let total = 200;
 var r;
-let factor = 0;
+let factor = 0.02;
 
 function setup() {
   createCanvas(200, 200);
@@ -16,7 +16,9 @@ function getVector(index, total) {
 
 function draw() {
   background(0);
-  let factor = 2;
+// factor = 6; //looks like clover
+
+factor += 0.003;
 
   translate(width / 2, height / 2);
 
