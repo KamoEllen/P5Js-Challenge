@@ -42,6 +42,11 @@ function draw() {
   } else if (keyIsDown(RIGHT_ARROW)) {
     particle.rotate(0.1);
   }
+  else if (keyIsDown(UP_ARROW)) {
+    particle.move(1);
+  } else if (keyIsDown(DOWN_ARROW)) {
+    particle.move(-1);
+  }
   for (let wall of walls) {
     wall.show();
   }

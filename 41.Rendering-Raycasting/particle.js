@@ -7,6 +7,12 @@ class Particle {
     for (let a = -this.fov / 2; a < this.fov / 2; a += 1) {
       this.rays.push(new Ray(this.pos, radians(a)));
     }
+    move(amt) 
+    {
+      const vel = p5.Vector.fromAngle(this.heading);
+      vel.setMag(amt);
+      this.pos.add(vel);
+    }
   }
 
   rotate(angle) {
