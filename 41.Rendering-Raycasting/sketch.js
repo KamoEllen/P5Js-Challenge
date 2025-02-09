@@ -3,6 +3,7 @@ let ray;
 let particle;
 let xoff = 0;
 let yoff = 10000;
+let sliderFOV;
 
 function setup() {
   createCanvas(400, 400);
@@ -18,10 +19,29 @@ function setup() {
   walls.push(new Boundary(width, height, -1, height));
   walls.push(new Boundary(-1, height, -1, -1));
   particle = new Particle();
+  sliderFOV = createSlider(0, 360, 45);
+  sliderFOV.input(changeFOV);
 }
+
+function changeFOV() {
+  const fov = sliderFOV.value();
+  particle.updateFOV(fov);
+}
+
+// function draw() {
+//   if (keyIsDown(LEFT_ARROW)) {
+//     particle.rotate(-0.1);
+//   } else if (keyIsDown(RIGHT_ARROW)) {
+//     particle.rotate(0.1);
+//   }
 
 function draw() {
   background(0);
+  if (keyIsDown(LEFT_ARROW)) {
+    particle.rotate(-0.1);
+  } else if (keyIsDown(RIGHT_ARROW)) {
+    particle.rotate(0.1);
+  }
   for (let wall of walls) {
     wall.show();
   }
