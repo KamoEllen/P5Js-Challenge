@@ -61,18 +61,31 @@ function draw()
         {
             for (let j = 0; j < rows; j++)
             {
+                //edges
+                if (i == 0|| i == cols -1 || j == 0 || j == rows -1)
+                {
+                    //using same value if found to be on the edge
+                    next[i][j] =grid[i][j];
+                }
                 //count neighbors with value 1
                 let sum = 0;
-                sum += grid[i -1][j-1 ]
-                sum += grid[i][j-1 ]
-                sum += grid[i +1][j-1]
-                sum += grid[i +1][j]
-                sum += grid[i +1][j+1 ]
-                sum += grid[i][j+1 ]
-                sum += grid[i -1][j+1 ]
-                sum += grid[i -1][j]
-                // sum += grid[i -j][j-1 ]
+                let neighbors =count(grid,i,j);
+               
             }
         }
     // grid = next;
+}
+
+function countNeighbors(grid,x,y)
+{
+    let sum = 0;
+    for (let i =-1; i < 2; i++)
+    {
+        for (let j = -1; j < 2; j++)
+        {
+sum += grid[i][j];
+        }
+    }
+    sum -= grid[x][y];
+    return sum;
 }
