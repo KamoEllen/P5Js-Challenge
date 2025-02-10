@@ -1,4 +1,4 @@
-let w = 24;
+let w = 2;
 let angle = 0;
 let angle_magic;
 let maxD;
