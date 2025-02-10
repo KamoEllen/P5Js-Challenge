@@ -7,34 +7,42 @@ function draw()
     background(51,88,94);
     sevenSegment(0x7E );
 }
+function getColor(val,shift)
+{
+    let r = 255;
+    let g = 30;
+    let b = 30;
+    let a =  200 * ((val >> shift) & 1);
+    return color(r,g,b,a);
+}
 
-
-//using hexadecimal encoding 'abcdefg'
 function sevenSegment(val)
 { 
-    noFill();
-    push();
-    // using bit shift
-    //000000001
-    //shifting bit to the left
-    //000000010
-    stroke(0);
-    //0 is blck, 1 is white
-    colorMode(RGB,1);
    
-    fill(val >> 6& 1)
+    push();
+    stroke(0);
+    noFill();
+
+    fill(getColor(val,6));
     rect(40,30,90,10); //a
-    fill(val >> 5& 1)
+
+    fill(getColor(val,5));
     rect(140,50,10,90); //b
-    fill(val >> 4& 1)
+
+    fill(getColor(val,4));
     rect(140,160,10,90); //c
-    fill(val >> 3& 1)
+
+    fill(getColor(val,3));
     rect(40,260,90,10); //d
-    fill(val >> 2& 1)
+
+    fill(getColor(val,2));
     rect(20,160,10,90); //e
-    fill(val >> 1& 1)
+
+    fill(getColor(val,1));
     rect(20,50,10,90); //b
-    fill(val >> 0& 1)
+
+    fill(getColor(val,0));
     rect(40,145,90,10); //g
+
     pop();
 }
