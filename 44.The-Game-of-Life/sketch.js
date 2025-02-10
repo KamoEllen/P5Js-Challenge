@@ -61,15 +61,39 @@ function draw()
         {
             for (let j = 0; j < rows; j++)
             {
-                //edges
+                let state = grid[i][j];
+
+                //am i on the edge
                 if (i == 0|| i == cols -1 || j == 0 || j == rows -1)
                 {
                     //using same value if found to be on the edge
-                    next[i][j] =grid[i][j];
+                    next[i][j] =state;
+                    
                 }
-                //count neighbors with value 1
+                else
+                {
+                    
+                
+
+                //if not on the edge then count neighbors , change or stay the same
                 let sum = 0;
-                let neighbors =count(grid,i,j);
+                let neighbors =countNeighbors(grid,i,j);
+
+               
+
+                if (state == 0 && neighbors == 3)
+                {
+                    next[i][j]= 1;
+                }
+                else if (state ==1 && (neighbors < 2 || neighbors > 3))
+                {
+                    next[i][j] = 0;
+                }
+                else
+                {
+                    next[i][j] = state;
+                }
+            }
                
             }
         }
@@ -83,7 +107,8 @@ function countNeighbors(grid,x,y)
     {
         for (let j = -1; j < 2; j++)
         {
-sum += grid[i][j];
+            //looking at pints from x,y
+sum += grid[x+ i][y + j];
         }
     }
     sum -= grid[x][y];
