@@ -52,11 +52,11 @@ function draw() {
             let state = grid[i][j];
 
             // am I on the edge
-            if (i == 0 || i == cols - 1 || j == 0 || j == rows - 1) {
-                // using same value if found to be on the edge
-                next[i][j] = state;
-            } else {
-                // if not on the edge then count neighbors, change or stay the same
+            // if (i == 0 || i == cols - 1 || j == 0 || j == rows - 1) {
+            //     // using same value if found to be on the edge
+            //     next[i][j] = state;
+            // } else {
+            //     // if not on the edge then count neighbors, change or stay the same
                 let neighbors = countNeighbors(grid, i, j);
 
                 if (state == 0 && neighbors == 3) {
@@ -66,7 +66,7 @@ function draw() {
                 } else {
                     next[i][j] = state;
                 }
-            }
+            //}
         }
     }
 
@@ -78,8 +78,15 @@ function countNeighbors(grid, x, y) {
     let sum = 0;
     for (let i = -1; i < 2; i++) {
         for (let j = -1; j < 2; j++) {
+
+            //modulos gives the remainder after division
+            let col = (x + i + cols) % cols;
+            let row = ( y + j + rows) % rows;
+            sum += grid[col][row];
+
+
             // looking at points from x,y
-            sum += grid[x + i][y + j];
+            // sum += grid[x + i][y + j];
         }
     }
     sum -= grid[x][y];
