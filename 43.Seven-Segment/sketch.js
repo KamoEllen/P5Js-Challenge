@@ -2,8 +2,8 @@ let nums = [0x7e, 0x30, 0x6d, 0x79, 0x33, 0x5b, 0x5f, 0x70, 0x7f, 0x7b];
  let index=0;
 
 function setup() {
-    createCanvas(400, 400);
-    frameRate(3);
+    createCanvas(200, 300);
+    frameRate(2);
 }
 function draw()
 {
