@@ -1,11 +1,15 @@
+let nums = [0x7e, 0x30, 0x6d, 0x79, 0x33, 0x5b, 0x5f, 0x70, 0x7f, 0x7b];
+ let index=0;
 
 function setup() {
     createCanvas(400, 400);
+    frameRate(3);
 }
 function draw()
 {
     background(51,88,94);
-    sevenSegment(0x7E );
+    sevenSegment(nums[index] );
+    index = (index+1) % nums.length;
 }
 function getColor(val,shift)
 {
