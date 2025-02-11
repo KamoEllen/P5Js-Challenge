@@ -1,68 +1,48 @@
-let ax, ay;
-let bx, by;
-let cx, cy;
+let points = [];
+var current;
 
-let x,y;
+let x, y;
 
 function setup() {
-    createCanvas(400, 400);
-    stroke(255);
-    strokeWeight(8); // thickness
-    background(20); // Clear the canvas every frame
+  createCanvas(400, 400);
+  background(0); 
+   
+  stroke(255);
+  strokeWeight(8); // thickness
+ 
+  //3 random points
+  for (let i = 0; i < 3; i++) {
+    let v = createVector(random(width), random(height)); // Fixed typo: ceateVector -> createVector
+    points.push(v);
+  }
 
-    // Generate new random positions
-    // ax = random(width);
-    ax = width/2;
-    // ay = random(height);
-    // bx = random(width);
-    ay = 0;
-    bx = 0;
-    by = height;
-    cx = width;
-    cy = height;
+  //current point is set to a random position
+  current = createVector(random(width), random(height)); // Fixed typo: ceateVector -> createVector
 
-    // by = random(height);
-    // cx = random(width);
-    // cy = random(height);
-
-    x = random(width);
-    y = random(height);
-
-    // Draw the points
-    point(ax, ay);
-    point(bx, by);
-    point(cx, cy);
+  //initial 3 points
+  for (let p of points) {
+    point(p.x, p.y);
+  }
+  
 }
+
+
+  
+
 
 function draw() {
-    for (let i = 0;i < 100; i++)
-    {
-
-    
-    
+  for (let i = 0; i < 100; i++) {
     strokeWeight(2);
-    point(x,y);
+    stroke(255,0,255);
+    point(x, y);
 
-    //picking random point n movinghalfway there
-    let r = floor(random(3));
-    if (r == 0)
-    {
-        stroke(255,0,255);
-        x = lerp(x,ax,0.5);
-        y = lerp(y,ay,0.5);
-    }
-    else if ( r==1)
-        {
-            stroke(0,255,255);
-            x = lerp(x,bx,0.5);
-            y = lerp(y,by,0.5);
-        }
-    else if ( r==2)
-    {
-        stroke(255,255,0);
-        x = lerp(x,cx,0.5);
-        y = lerp(y,cy,0.5);
-    }
-}
+    // Randomly choose one of the 3 points and interpolate towards it
+    // let r = floor(random(3));
+    let next = random(points);
+    current.x = lerp(current.x, next.x,0.5);
+    current.y = lerp(current.y, next.y,0.5);
+    point(current.x, current.y)
 
+   
+  }
 }
