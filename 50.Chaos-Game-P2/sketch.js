@@ -6,7 +6,13 @@ let x, y;
 function setup() {
   createCanvas(400, 400);
   background(0); 
-   
+
+  reset(); // Refactoring :)
+}
+
+function reset()
+{
+     
   stroke(255);
   strokeWeight(8); // thickness
  
@@ -23,13 +29,7 @@ function setup() {
   for (let p of points) {
     point(p.x, p.y);
   }
-  
 }
-
-
-  
-
-
 function draw() {
   for (let i = 0; i < 100; i++) {
     strokeWeight(2);
