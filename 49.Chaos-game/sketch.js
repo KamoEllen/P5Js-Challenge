@@ -5,7 +5,7 @@ let cx, cy;
 let x,y;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(400, 400);
     stroke(255);
     strokeWeight(8); // thickness
     background(0); // Clear the canvas every frame
