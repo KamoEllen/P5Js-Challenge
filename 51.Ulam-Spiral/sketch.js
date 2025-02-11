@@ -8,6 +8,23 @@ var state = 0; //right
 let turnCounter = 0;
 let totalSteps;
 
+
+function isPrime(value)
+{
+    let primmi= true;
+    if (value == 1)
+        return false;
+    for (let i= 2; i <= sqrt(value); i++)
+    {
+        if (value % i == 0)
+        {
+            primmi = false;
+            break;
+        }
+    }
+    return primmi;
+}
+
 function setup() {
     createCanvas(500, 500);
 
@@ -44,7 +61,10 @@ function draw() {
     //circles
     fill(127);
     stroke(255);
+   if (isPrime(step))
+   {
     circle(x,y,stepSize* 0.25);
+   }
     line(x,y,px,py);
     px = x;
     py = y;
