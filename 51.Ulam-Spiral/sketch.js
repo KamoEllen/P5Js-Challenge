@@ -1,14 +1,25 @@
 let x, y;
+let px, py;
 
 let step = 1;
-let stepSize = 50; 
-// let numberSteps = 0; //right
+let stepSize = 30; 
+let numberSteps = 1; //right
 var state = 0; //right
+let turnCounter = 0;
+let totalSteps;
 
 function setup() {
     createCanvas(500, 500);
+
+    const cols = width / stepSize;
+  const rows = height / stepSize;
+  totalSteps = cols * rows;
+
+
     x = width / 2;
     y = height / 2;
+    px = x;
+    py =y;
     background(0);
    
     
@@ -16,12 +27,29 @@ function setup() {
 
 
 function draw() {
-    // background(0); //not clearing background so previous numbers stay visible
-    
-    textSize(20);
-    textAlign(CENTER, CENTER); 
-        fill(255);
-    text(step, x, y);
+
+    //numbers
+    // textSize(20);
+    // textAlign(CENTER, CENTER); 
+    //     fill(255);
+    // text(step, x, y);
+
+
+    //rect
+    // fill(127);
+    // stroke(255);
+    // rectMode(CENTER);
+    // square(x,y,stepSize)
+
+    //circles
+    fill(127);
+    stroke(255);
+    circle(x,y,stepSize* 0.25);
+    line(x,y,px,py);
+    px = x;
+    py = y;
+
+
 
     switch (state) {
         case 0:
@@ -38,11 +66,21 @@ function draw() {
             break;
     }
 
+  
+    // Change direction every 2 steps
+    if (step % numberSteps == 0) {
+        state = (state + 1) % 4;
+        turnCounter++;
+        if (turnCounter % 2 == 0)
+        {
+            numberSteps++;
+        }
+    }
+    frameRate(4);
     step++;
 
-    // Change direction every 2 steps
-    if (step % 2 == 0) {
-        state = (state + 1) % 4;
+    if(step > totalSteps)
+    {
+        noLoop();
     }
-    frameRate(1);
 }
