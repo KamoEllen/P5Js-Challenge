@@ -1,23 +1,25 @@
 let x, y;
 
 let step = 1;
-let stepSize = 100;
-let numberSteps = 1;
-let state;
+let stepSize = 50; 
+// let numberSteps = 0; //right
+var state = 0; //right
 
 function setup() {
     createCanvas(500, 500);
     x = width / 2;
     y = height / 2;
-    background(200, 30, 50);
+    // background(0);
+   
     
 }
 
 function draw() {
-    background(200, 30, 50);
+    background(0);
+    
     textSize(64);
     textAlign(CENTER, CENTER); 
-    fill(255);
+        fill(255);
     text(step, x, y);
 
     switch (state) {
@@ -39,6 +41,7 @@ function draw() {
 
     // Change direction every 2 steps
     if (step % 2 == 0) {
-        state = state + 1;
+        state = (state + 1) % 4;
     }
+    frameRate(1);
 }
