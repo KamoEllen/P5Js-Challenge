@@ -1,5 +1,6 @@
 let points ;
 var current;
+let percent = 0.8;
 
 let x, y;
 
@@ -48,15 +49,15 @@ function draw() {
     {
         reset(); 
     }
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 500; i++) {
     strokeWeight(2);
     stroke(255,0,255);
     point(x, y);
 
  
     let next = random(points);
-    current.x = lerp(current.x, next.x,0.5);
-    current.y = lerp(current.y, next.y,0.5);
+    current.x = lerp(current.x, next.x, percent);
+    current.y = lerp(current.y, next.y,percent);
     point(current.x, current.y)
 
    
