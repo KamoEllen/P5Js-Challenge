@@ -1,6 +1,7 @@
 let points ;
 var current;
-let percent = 0.8;
+let percent = 0.5;
+let previous;
 
 let x, y;
 
@@ -10,7 +11,7 @@ function setup() {
 
   //constant
   points = [];//empty array
-  const n = 8;
+  const n = 5;
  
   //3 random points
   for (let i = 0; i < n; i++) {
@@ -47,18 +48,23 @@ function draw() {
 
     if (frameCount % 100 == 0)
     {
-        reset(); 
+        // reset(); 
     }
-  for (let i = 0; i < 500; i++) {
-    strokeWeight(2);
-    stroke(255,0,255);
+  for (let i = 0; i < 1000; i++) {
+    strokeWeight(1);
+    stroke(255,0,255, 200);
     point(x, y);
 
  
     let next = random(points);
-    current.x = lerp(current.x, next.x, percent);
+    if (next != previous)
+    {
+current.x = lerp(current.x, next.x, percent);
     current.y = lerp(current.y, next.y,percent);
     point(current.x, current.y)
+    }
+    
+    previous = next;
 
    
   }
