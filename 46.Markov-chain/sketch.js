@@ -48,7 +48,8 @@ function setup() {
         var possibilities = ngrams[currentGram];
         var next = random(possibilities);
         result += next;
-        currentGram = result.substring(result.length-3, result.length);
+        var len =result.length
+        currentGram = result.substring(len-3, len);
     }
     
 
