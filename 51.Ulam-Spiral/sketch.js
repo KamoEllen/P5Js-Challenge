@@ -9,15 +9,16 @@ function setup() {
     createCanvas(500, 500);
     x = width / 2;
     y = height / 2;
-    // background(0);
+    background(0);
    
     
 }
 
+
 function draw() {
-    background(0);
+    // background(0); //not clearing background so previous numbers stay visible
     
-    textSize(64);
+    textSize(20);
     textAlign(CENTER, CENTER); 
         fill(255);
     text(step, x, y);
