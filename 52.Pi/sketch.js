@@ -1,25 +1,26 @@
-let pie;
+let pies = [];
 let plate;
 
 function setup() {
-    createCanvas(400, 400);
-    pie = new Pie(100,100);
-    plate  = new Plate(width/2, 100);
-  }
-  function draw() {
-    background(0);
-  
-    rectMode(CENTER);
-    rect(mouseX, height-10,100,10 );
-    pie.show();
-    pie.update();
+  createCanvas(400, 400);
+  pies[0] = new Pie(100, 100);
+  pies[1] = new Pie(100, 100);
+  plate = new Plate(width / 2, 100);
+}
+function draw() {
+  background(0);
 
-    if (plate.catches(pie))
-    {
-        console.log("Yay");
+  for (var i = 0; i < pies.length; i++) {
+    pies[i].show();
+    pies[i].update();
+
+    if (plate.catches(pies[i])) {
+      console.log("Yay");
     }
-    
-    plate.x =mouseX;
-    plate.show();
   }
-  
+  rectMode(CENTER);
+  rect(mouseX, height - 10, 100, 10);
+
+  plate.x = mouseX;
+  plate.show();
+}
