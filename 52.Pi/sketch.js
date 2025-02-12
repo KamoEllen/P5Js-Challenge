@@ -3,9 +3,10 @@ let plate;
 
 function setup() {
   createCanvas(400, 400);
-  pies[0] = new Pie(100, 100);
-  pies[1] = new Pie(100, 100);
-  plate = new Plate(width / 2, 100);
+  //both start at random position
+  pies[0] = new Pie(random(width), 100);
+  pies[1] = new Pie(random(width), 100);
+    plate = new Plate(width / 2, 100);
 }
 function draw() {
   background(0);
