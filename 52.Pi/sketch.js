@@ -1,5 +1,8 @@
+//collect numbers in order to make pi
 let pies = [];
 let plate;
+let digitsDiv;
+let digits = "3.";
 
 function setup() {
   createCanvas(400, 400);
@@ -7,14 +10,16 @@ function setup() {
   //both start at random position
 //   pies.push(new Pie(random(width), random(-100,200)));
 //   }
-    plate = new Plate(width / 2, 100);
+    plate = new Plate(width / 2, 50);
+    digitsDiv = createP(digits);
+    digitsDiv.style("font-size", "64pt");
 }
 function draw() {
   background(0);
   //raining circles , new ones pop up in random spots and fall 
- if (random(1) < 0.1)
+ if (random(1) < 0.001);
  {
-    pies.push(new Pie(random(width), random(-100,200)));
+    pies.push(new Pie(random(width), random(-100,-20)));
 
  }
 
@@ -33,6 +38,8 @@ for (let pie of pies)
         // console.log("Yay");
         //check which was caught and deal with score
         pies.splice(i,1);
+        digits +=pies[i].digit;
+        digitsDiv.html(digits);
       }
       
     else if (pies[i].y > height +  pies[i].r)

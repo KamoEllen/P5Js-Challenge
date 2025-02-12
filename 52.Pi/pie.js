@@ -3,8 +3,9 @@ class Pie{
     {
         this.x = x;
         this.y = y;
-        this.r = 32;
+        this.r = 30;
         this.digit =floor(random(10));
+        this.yspeed = 0;
     }
 
     show()
@@ -24,6 +25,7 @@ class Pie{
     update()
     {
         //increasing val of y by 1 everytime i update
-        this.y = this.y + 6;
+        this.y = this.y + this.yspeed;
+        this.yspeed += 0.02;
     }
 }
