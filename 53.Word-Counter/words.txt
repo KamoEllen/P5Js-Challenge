@@ -1,0 +1,38 @@
+Software engineering is a field within computer science focused on designing, developing, testing, and maintaining of software applications. It involves applying engineering principles and computer programming expertise to develop software systems that meet user needs.[1][2][3][4]
+
+The terms programmer and coder overlap software engineer, but they imply only the construction aspect of typical software engineer workload.[5]
+
+A software engineer applies a software development process,[1][6] which involves defining, implementing, testing, managing, and maintaining software systems; creating and modifying the development process.
+History
+Main article: History of software engineering
+Beginning in the 1960s, software engineering was recognized as a separate field of engineering.
+
+The development of software engineering was seen as a struggle. Problems included software that was over budget, exceeded deadlines, required extensive debugging and maintenance, and unsuccessfully met the needs of consumers or was never even completed.
+
+In 1968, NATO held the first software engineering conference where issues related to software were addressed. Guidelines and best practices for the development of software were established.[7]
+
+The origins of the term software engineering have been attributed to various sources. The term appeared in a list of services offered by companies in the June 1965 issue of "Computers and Automation"[8] and was used more formally in the August 1966 issue of Communications of the ACM (Volume 9, number 8) in "President's Letter to the ACM Membership" by Anthony A. Oettinger.[9][10] It is also associated with the title of a NATO conference in 1968 by Professor Friedrich L. Bauer.[11] Margaret Hamilton described the discipline of "software engineering" during the Apollo missions to give what they were doing legitimacy.[12] At the time there was perceived to be a "software crisis".[13][14][15] The 40th International Conference on Software Engineering (ICSE 2018) celebrates 50 years of "Software Engineering" with the Plenary Sessions' keynotes of Frederick Brooks[16] and Margaret Hamilton.[17]
+
+In 1984, the Software Engineering Institute (SEI) was established as a federally funded research and development center headquartered on the campus of Carnegie Mellon University in Pittsburgh, Pennsylvania, United States.[18] Watts Humphrey founded the SEI Software Process Program, aimed at understanding and managing the software engineering process.[18] The Process Maturity Levels introduced became the Capability Maturity Model Integration for Development (CMMI-DEV), which defined how the US Government evaluates the abilities of a software development team.
+
+Modern, generally accepted best-practices for software engineering have been collected by the ISO/IEC JTC 1/SC 7 subcommittee and published as the Software Engineering Body of Knowledge (SWEBOK).[6] Software engineering is considered one of the major computing disciplines.[19]
+
+Terminology
+Definition
+Notable definitions of software engineering include:
+
+"The systematic application of scientific and technological knowledge, methods, and experience to the design, implementation, testing, and documentation of software."—The Bureau of Labor Statistics—IEEE Systems and software engineering – Vocabulary[20]
+"The application of a systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software."—IEEE Standard Glossary of Software Engineering Terminology[21]
+"An engineering discipline that is concerned with all aspects of software production."—Ian Sommerville[22]
+"The establishment and use of sound engineering principles in order to economically obtain software that is reliable and works efficiently on real machines."—Fritz Bauer[23]
+"A branch of computer science that deals with the design, implementation, and maintenance of complex computer programs."—Merriam-Webster[24]
+"'Software engineering' encompasses not just the act of writing code, but all of the tools and processes an organization uses to build and maintain that code over time. [...] Software engineering can be thought of as 'programming integrated over time.'"—Software Engineering at Google[25]
+The term has also been used less formally:
+
+as the informal contemporary term for the broad range of activities that were formerly called computer programming and systems analysis[26]
+as the broad term for all aspects of the practice of computer programming, as opposed to the theory of computer programming, which is formally studied as a sub-discipline of computer science[27]
+as the term embodying the advocacy of a specific approach to computer programming, one that urges that it be treated as an engineering discipline rather than an art or a craft, and advocates the codification of recommended practices[28]
+Etymology
+Margaret Hamilton promoted the term "software engineering" during her work on the Apollo program. The term "engineering" was used to acknowledge that the work should be taken just as seriously as other contributions toward the advancement of technology. Hamilton details her use of the term:
+
+When I first came up with the term, no one had heard of it before, at least in our world. It was an ongoing joke for a long time. They liked to kid me about my radical ideas. It was a memorable day when one of the most respected hardware gurus explained to everyone in a meeting that he agreed with me that the process of building software should also be considered an engineering discipline, just like with hardware. Not because of his acceptance of the new "term" per se, but because we had earned his and the acceptance of the others in the room as being in an engineering field in its own right.[29]
