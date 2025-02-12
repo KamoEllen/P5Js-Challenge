@@ -3,11 +3,12 @@ class Pie{
     {
         this.x = x;
         this.y = y;
+        this.r = 32;
     }
 
     show()
     {
-        circle(this.x, this.y , 32);
+        circle(this.x, this.y , this.r);
     }
 
     update()

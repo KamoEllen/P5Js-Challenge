@@ -11,6 +11,7 @@ function setup() {
 }
 function draw() {
   background(0);
+  //raining circles , new ones pop up in random spots and fall 
   pies.push(new Pie(random(width), random(-100,200)));
 
 
@@ -20,10 +21,25 @@ for (let pie of pies)
     pie.show();
     pie.update();
 
-    if (plate.catches(pie)) {
-      console.log("Yay");
+    
+  }
+
+  for ( let i = pies.length-1; i >=0 ; i--)
+  {
+    if (plate.catches(pies[i])) {
+        // console.log("Yay");
+        //check which was caught and deal with score
+        pies.splice(i,1);
+      }
+      
+    else if (pies[i].y > height +  pies[i].r)
+    {
+        //eat
+        pies.splice(i,1);
     }
   }
+  console.log(pies.length);
+
   rectMode(CENTER);
   rect(mouseX, height - 10, 100, 10);
 
