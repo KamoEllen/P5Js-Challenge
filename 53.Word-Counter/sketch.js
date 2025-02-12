@@ -10,7 +10,10 @@ function setup() {
     // /\W+/ == any non-alphanumeric character
     var tokens = allwords.split(/\W+/);
     
-
+   
+    tokens = tokens.filter(function(token) {
+        return token.length > 0;
+    });
 
     console.log(tokens);
 
@@ -18,10 +21,13 @@ function setup() {
         var word = tokens[i]; // Check each word
         // Word will be key and count will be priority
 
-        if (counts[word] === undefined) {
-            counts[word] = 1;
-        } else {
-            counts[word] = counts[word] + 1;
+        if (!/\d+/.test(word))
+        {
+            if (counts[word] === undefined) {
+                counts[word] = 1;
+            } else {
+                counts[word] = counts[word] + 1;
+            }
         }
     }
 
