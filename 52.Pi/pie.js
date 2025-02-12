@@ -13,6 +13,6 @@ class Pie{
     update()
     {
         //increasing val of y by 1 everytime i update
-        this.y = this.y + 1;
+        this.y = this.y + 6;
     }
 }
