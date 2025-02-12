@@ -12,8 +12,11 @@ function setup() {
 function draw() {
   background(0);
   //raining circles , new ones pop up in random spots and fall 
-  pies.push(new Pie(random(width), random(-100,200)));
+ if (random(1) < 0.1)
+ {
+    pies.push(new Pie(random(width), random(-100,200)));
 
+ }
 
 //   for (var i = 0; i < pies.length; i++) {
 for (let pie of pies)

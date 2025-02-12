@@ -24,6 +24,7 @@ return true;
 
     show()
     {
+        fill(255,255,3);
         rectMode(CENTER);
         rect(this.x,this.y,this.w,this.h);
     }
