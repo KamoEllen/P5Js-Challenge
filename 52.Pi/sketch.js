@@ -3,19 +3,24 @@ let plate;
 
 function setup() {
   createCanvas(400, 400);
+//   for (var i = 0; i <12; i++) {
   //both start at random position
-  pies[0] = new Pie(random(width), 100);
-  pies[1] = new Pie(random(width), 100);
+//   pies.push(new Pie(random(width), random(-100,200)));
+//   }
     plate = new Plate(width / 2, 100);
 }
 function draw() {
   background(0);
+  pies.push(new Pie(random(width), random(-100,200)));
 
-  for (var i = 0; i < pies.length; i++) {
-    pies[i].show();
-    pies[i].update();
 
-    if (plate.catches(pies[i])) {
+//   for (var i = 0; i < pies.length; i++) {
+for (let pie of pies)
+{
+    pie.show();
+    pie.update();
+
+    if (plate.catches(pie)) {
       console.log("Yay");
     }
   }
