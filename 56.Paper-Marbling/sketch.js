@@ -6,6 +6,11 @@ function setup() {
 
 function mousePressed() {
   let drop = new Drop(mouseX, mouseY, 50);
+
+  for (let other of drops)
+  {
+    other.marble(drop);
+  }
   drops.push(drop);
 }
 
