@@ -27,6 +27,13 @@ function setup() {
     grid[20][10] = 1;
 }
 
+function mousePressed()
+{
+    let col = floor(mouseX/w);
+    let row = floor(mouseY/w);
+    grid[col][row] = 1;
+}
+
 function draw() {
     background(22, 99, 33);
 
@@ -46,6 +53,7 @@ function draw() {
             let state = grid[i][j];
             if (state == 1) {
                 let below = grid[i][j + 1];
+                //block falls down or stops moving
                 if (below == 0) {
                     nextGrid[i][j] = 0;
                     nextGrid[i][j + 1] = 1;
