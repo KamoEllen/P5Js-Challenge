@@ -12,6 +12,7 @@ class Blackhole {
         const fg = G * this.mass / (r * r);
         force.setMag(fg);
         photon.vel.add(force);
+        photon.vel.limit(c);
         
     
       }
