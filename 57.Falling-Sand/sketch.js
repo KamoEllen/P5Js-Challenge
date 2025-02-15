@@ -1,4 +1,3 @@
-//from game of life folder
 function make2DArray(cols,rows)
 {
     let arr = new Array(cols);
