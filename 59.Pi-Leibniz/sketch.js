@@ -26,7 +26,7 @@ function draw() {
         let spacing = width / history.length;
         for (let i = 0; i < history.length; i++) {
             let x = i * spacing;
-            let y = map(history[i], 2, 4, height);
+            let y = map(history[i], 2, 4, height,0);
             vertex(x, y);
         }
         endShape();
