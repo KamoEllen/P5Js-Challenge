@@ -23,7 +23,7 @@ function setup() {
 function draw()
 {
     background(255);
-    m87.show();
+   
 
     //see end and start lines
     stroke(0);
@@ -37,4 +37,5 @@ function draw()
         p.update();
         p.show();
     }
+     m87.show();
 }
