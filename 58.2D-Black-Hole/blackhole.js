@@ -4,6 +4,17 @@ class Blackhole {
       this.mass = m;
       this.rs = (2 * G * this.mass) / (c * c);
     }
+
+    pull(photon) {
+        const force = p5.Vector.sub(this.pos, photon.pos);
+    
+        const r = force.mag();
+        const fg = G * this.mass / (r * r);
+        force.setMag(fg);
+        photon.vel.add(force);
+        
+    
+      }
    
 
     show() {

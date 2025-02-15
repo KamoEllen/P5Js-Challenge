@@ -1,5 +1,6 @@
 const c = 30;
 const G = 6;  //grav constant
+const dt = 0.1;
 let m87;
 
 const particles = [];
@@ -25,6 +26,8 @@ function draw()
 
     for (let p of particles)
     {
+        m87.pull(p);
+        p.update();
         p.show();
     }
 }
