@@ -1,3 +1,5 @@
+let hueValue = 200;
+
 function make2DArray(cols, rows) {
     let arr = new Array(cols);
     for (let i = 0; i < arr.length; i++) {
@@ -15,6 +17,7 @@ let cols, rows;
 
 function setup() {
     createCanvas(400, 400);
+    colorMode(HSB, 360, 255, 255);
     cols = width / w;
     rows = height / w;
     grid = make2DArray(cols, rows);
@@ -42,11 +45,17 @@ function mouseDragged() {
           let row = mouseRow + j;
           if (cols >= 0 && col <= cols -1 && row >= 0 )
           {
-            grid[col][row] =1 ;
+            grid[col][row] = hueValue;
           }
         }
       }
     }
+    //hue color changes over time
+    hueValue += 1;
+  if (hueValue > 360) {
+    hueValue = 1;
+  }
+
 }
 
 function draw() {
@@ -56,7 +65,8 @@ function draw() {
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
             noStroke();
-            fill(grid[i][j] * 255);
+            // fill(grid[i][j] * 255);
+            fill(grid[i][j], 255, 255);
             let x = i * w;
             let y = j * w;
             square(x, y, w);
