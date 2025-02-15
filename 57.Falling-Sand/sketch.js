@@ -24,21 +24,38 @@ function setup() {
             grid[i][j] = 0;
         }
     }
-    grid[20][10] = 1;
+    // grid[20][10] = 1;
 }
 
 function mouseDragged() {
-    let col = floor(mouseX / w);
-    let row = floor(mouseY / w);
-    grid[col][row] = 1;
+    let mouseCol = floor(mouseX / w);
+    let mouseRow = floor(mouseY / w);
+    
+   
+    //can drop blocks in 5 radius
+    let matrix = 5;
+    let extent = floor(matrix / 2);
+    for (let i = -extent; i <= extent; i++) {
+      for (let j = -extent; j <= extent; j++) {
+        if (random(1) < 0.75) {
+          let col = mouseCol + i;
+          let row = mouseRow + j;
+          if (cols >= 0 && col <= cols -1 && row >= 0 )
+          {
+            grid[col][row] =1 ;
+          }
+        }
+      }
+    }
 }
 
 function draw() {
     background(22, 99, 33);
+    noStroke();
 
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
-            stroke(255);
+            noStroke();
             fill(grid[i][j] * 255);
             let x = i * w;
             let y = j * w;
