@@ -1,5 +1,7 @@
 let data;
 let months;
+let zeroRadius = 125;
+let oneRadius = 200;
 
 function preload() {
     data = loadTable("giss-data-apr-11-2023.csv", "csv", "header");
@@ -34,19 +36,19 @@ function draw() {
     noFill();
     stroke(255);
     strokeWeight(4);
-    circle(0,0,100);
+    circle(0, 0, zeroRadius * 2);
     fill(255);
     noStroke();
-    text("0°", 54,0);
+    text("0°", zeroRadius+10,0);
 
     //1 degree
     noFill();
     stroke(255);
     strokeWeight(4);
-    circle(0,0,300);
+    circle(0, 0, oneRadius * 2);
     fill(255);
     noStroke();
-    text("1°", 154,0);
+    text("1°",oneRadius+10,0);
 
     //month
     noFill();
@@ -70,5 +72,22 @@ function draw() {
         text(months[i], 0, 0);
         pop();
       }
+
+      let row = data.getRow(0);
+      let year = row.get("Year");
+      textAlign(CENTER,CENTER);
+      text(year,0,0);
+      for (let i = 0; i < months.length;i++)
+      {
+        strokeWeight(4);
+        stroke(2);
+        let anomoly = row.getNum(months[i]);
+        let angle = map(i,0,months.length, 0, TWO_PI) +PI/2;
+        let x = 50 * cos(angle);
+        let y = 50 * sin(angle);
+        circle(x,y,16);
+      }
+      noLoop();
+
 
 }
