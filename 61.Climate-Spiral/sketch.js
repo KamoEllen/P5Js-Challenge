@@ -80,28 +80,19 @@ function draw() {
 noFill();
 stroke(255); 
 strokeWeight(2);  
-      for(let j = 0; j <  data.getRowCount();j++)
-      {
-        let row = data.getRow(j);
-        // let year = row.get("Year");
-        // textAlign(CENTER,CENTER);
-        // text(year,0,0);
-     
-      for (let i = 0; i < months.length;i++)
-      {
-        let anomoly = row.getNum(months[i]);
-        if (!isNaN(anomoly)) {  // Check if data is valid
-            anomoly = parseFloat(anomoly);
-            let angle = map(i,0,months.length, 0, TWO_PI) +PI/2;
-            let r = map(anomoly, 0, 1, zeroRadius, oneRadius);
-            let x = r* cos(angle);
+for (let j = 0; j < data.getRowCount(); j++) {  
+    let row = data.getRow(j);
+    beginShape();  // inside the loop, creating a separate shape per year
+    for (let i = 0; i < months.length; i++) {  
+        let anomaly = row.getNum(months[i]);
+        if (!isNaN(anomaly)) {  
+            let angle = map(i, 0, months.length, 0, TWO_PI) - HALF_PI;  
+            let r = map(anomaly, 0, 1, zeroRadius, oneRadius);
+            let x = r * cos(angle);
             let y = r * sin(angle);
-            vertex(x,y);
+            vertex(x, y);
         }
-      }
     }
-      endShape(CLOSE);
-      noLoop();
-
-
+    endShape();  
+}
 }
