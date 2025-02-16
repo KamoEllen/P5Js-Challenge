@@ -7,8 +7,22 @@ function preload() {
   
 function setup() {
     createCanvas(600, 600);
-    months = data.columns.slice(1);
-    console.log(months);
+    // months = data.columns.slice(1);
+    // console.log(months);
+    months = [
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+      ];
 
 }
 
@@ -41,7 +55,7 @@ function draw() {
     circle(0,0,500);
     fill(255);
     noStroke();
-    text("Months", 255,0);
+    // text("Months", 255,0);
 
     for (let i = 0; i < months.length; i++)
     {
@@ -49,7 +63,7 @@ function draw() {
         fill(255);
         textAlign(CENTER);
         textSize(32);
-        let angle = map(i,0,months.length, 0, TWO_PI);
+        let angle = map(i,0,months.length, 0, TWO_PI) ;
         let x= 250 * cos(angle);
         let y = 250 * sin(angle); 
         // text(months[i],0,-250);
