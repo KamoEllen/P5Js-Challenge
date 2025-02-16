@@ -83,8 +83,9 @@ function draw() {
         stroke(2);
         let anomoly = row.getNum(months[i]);
         let angle = map(i,0,months.length, 0, TWO_PI) +PI/2;
-        let x = 50 * cos(angle);
-        let y = 50 * sin(angle);
+        let r = map(anomoly,0,1,75,150);
+        let x = r* cos(angle);
+        let y = r * sin(angle);
         circle(x,y,16);
       }
       noLoop();
