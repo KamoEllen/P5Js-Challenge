@@ -1,31 +1,50 @@
-var tree = [];
-var walkers = [];
-var r =6;
+let tree = [];
+let walkers = [];
+let maxWalkers = 50;
+let iterations = 1000;
+let radius = 8;
+let hu = 0;
+let shrink = 0.995;
 
 function setup() {
-    createCanvas(600, 600);
-    tree[0] = new Walker(width/2, height/2,true);
-    // tree[0] = createVector(width / 2, height / 2);
+  createCanvas(windowWidth, windowHeight);
+  colorMode(HSB);
+
+  tree[0] = new Walker(width / 2, height / 2);
+  radius *= shrink;
+  for (var i = 0; i < maxWalkers; i++) {
+    walkers[i] = new Walker();
+    radius *= shrink;
+  }
 }
 
 function draw() {
-    background(0);
+  background(0);
 
-    var walkers = [];
-    for (var i = 0; i < 10; i++)
-    {
-        walkers[i] = createVector(createVector(random(width), random(height)));
+  for (let i = 0; i < tree.length; i++) {
+    tree[i].show();
+  }
+
+  for (let i = 0; i < walkers.length; i++) {
+    walkers[i].show();
+  }
+
+  for (let n = 0; n < iterations; n++) {
+    for (let i = walkers.length - 1; i >= 0; i--) {
+      walkers[i].walk();
+      if (walkers[i].checkStuck(tree)) {
+        walkers[i].setHue(hu % 360);
+        hu += 2;
+        tree.push(walkers[i]);
+        walkers.splice(i, 1);
+      }
     }
-    // var stuck = false;
-    walker = createVector(random(width), random(height));
+  }
 
-    
-    
-    tree.push(walker);
+  var r = walkers[walkers.length - 1].r;
+  while (walkers.length < maxWalkers && radius > 1) {
+    radius *= shrink;
+    walkers.push(new Walker());
+  }
 
-    for (var i = 0; i < tree.length; i++) {
-        strokeWeight(r*2);
-        stroke(255,100);
-        point(tree[i].x, tree[i].y);
-    }
 }
