@@ -23,7 +23,7 @@ function draw() {
         walker.x += random(-2, 2);
         walker.y += random(-2, 2);
         
-        // Corrected this part
+       
         walker.x = constrain(walker.x, 0, width);
         walker.y = constrain(walker.y, 0, height);
     }
