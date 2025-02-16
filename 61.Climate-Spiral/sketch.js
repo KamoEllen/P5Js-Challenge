@@ -73,21 +73,34 @@ function draw() {
         pop();
       }
 
-      let row = data.getRow(0);
-      let year = row.get("Year");
-      textAlign(CENTER,CENTER);
-      text(year,0,0);
+     
+    //   beginShape();
+    //   noFill();
+    beginShape();
+noFill();
+stroke(255); 
+strokeWeight(2);  
+      for(let j = 0; j <  data.getRowCount();j++)
+      {
+        let row = data.getRow(j);
+        // let year = row.get("Year");
+        // textAlign(CENTER,CENTER);
+        // text(year,0,0);
+     
       for (let i = 0; i < months.length;i++)
       {
-        strokeWeight(4);
-        stroke(2);
         let anomoly = row.getNum(months[i]);
-        let angle = map(i,0,months.length, 0, TWO_PI) +PI/2;
-        let r = map(anomoly,0,1,75,150);
-        let x = r* cos(angle);
-        let y = r * sin(angle);
-        circle(x,y,16);
+        if (!isNaN(anomoly)) {  // Check if data is valid
+            anomoly = parseFloat(anomoly);
+            let angle = map(i,0,months.length, 0, TWO_PI) +PI/2;
+            let r = map(anomoly, 0, 1, zeroRadius, oneRadius);
+            let x = r* cos(angle);
+            let y = r * sin(angle);
+            vertex(x,y);
+        }
       }
+    }
+      endShape(CLOSE);
       noLoop();
 
 
