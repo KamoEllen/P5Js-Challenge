@@ -1,10 +1,15 @@
 let data;
+let months;
+
 function preload() {
     data = loadTable("giss-data-apr-11-2023.csv", "csv", "header");
   }
   
 function setup() {
     createCanvas(600, 600);
+    months = data.columns.slice(1);
+    console.log(months);
+
 }
 
 function draw() {
@@ -37,5 +42,18 @@ function draw() {
     fill(255);
     noStroke();
     text("Months", 255,0);
+
+    for (let i = 0; i < months.length; i++)
+    {
+        noStroke();
+        fill(255);
+        textAlign(CENTER);
+        textSize(32);
+        let angle = map(i,0,months.length, 0, TWO_PI);
+        let x= 250 * cos(angle);
+        let y = 250 * sin(angle); 
+        // text(months[i],0,-250);
+        text(months[i], x, y);
+    }
 
 }
