@@ -2,13 +2,15 @@ let cells = []; //1,0,0,1,0,1,0,1,1,0,1,0,1,1,0
 let w = 40;
 let y = 0;
 function setup() {
-    createCanvas(600, 600);
+    createCanvas(410,410);
 
-    let  total = width/2;
+    let  total = width/w;
     for (let i =0; i < total; i++)
     {
-        cells[i] = floor(random(2));
+        // cells[i] = floor(random(2));
+        cells[i]=0;
     }
+    cells[floor(total/2)]   = 1;
     background(222,234,99);
   
 }
