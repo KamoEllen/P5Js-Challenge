@@ -4,7 +4,6 @@ function preload() {
     afinn = loadJSON('afinn111-edited.json');
 }
 
-
 function setup() {
   noCanvas();
   console.log(afinn);
