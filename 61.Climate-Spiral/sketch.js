@@ -57,17 +57,18 @@ function draw() {
     noStroke();
     // text("Months", 255,0);
 
-    for (let i = 0; i < months.length; i++)
-    {
+    for (let i = 0; i < months.length; i++) {
         noStroke();
         fill(255);
-        textAlign(CENTER);
-        textSize(32);
-        let angle = map(i,0,months.length, 0, TWO_PI) ;
-        let x= 250 * cos(angle);
-        let y = 250 * sin(angle); 
-        // text(months[i],0,-250);
-        text(months[i], x, y);
-    }
+        textSize(24);
+        let angle = map(i, 0, months.length, 0, TWO_PI);
+        push();
+        let x = 264 * cos(angle);
+        let y = 264 * sin(angle);
+        translate(x, y);
+        rotate(angle + PI / 2);
+        text(months[i], 0, 0);
+        pop();
+      }
 
 }
