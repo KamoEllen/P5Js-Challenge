@@ -1,6 +1,6 @@
 var tree = [];
 var walker;
-var r = 16;
+var r =6;
 
 function setup() {
     createCanvas(600, 600);
@@ -9,6 +9,12 @@ function setup() {
 
 function draw() {
     background(0);
+
+    var walkers = [];
+    for (var i = 0; i < 10; i++)
+    {
+        walkers[i] = createVector(createVector(random(width), random(height)));
+    }
     var stuck = false;
     walker = createVector(random(width), random(height));
 
@@ -20,19 +26,23 @@ function draw() {
                 break;
             }
         }
-        walker.x += random(-2, 2);
-        walker.y += random(-2, 2);
+        var vel = p5.Vector.random2D();
+        walker.add(vel);
+
+        // walker.x += random(-2, 2);
+        // walker.y += random(-2, 2);
         
        
         walker.x = constrain(walker.x, 0, width);
         walker.y = constrain(walker.y, 0, height);
-    }
+    
+}
     
     tree.push(walker);
 
     for (var i = 0; i < tree.length; i++) {
-        strokeWeight(r);
-        stroke(255);
+        strokeWeight(r*2);
+        stroke(255,100);
         point(tree[i].x, tree[i].y);
     }
 }
