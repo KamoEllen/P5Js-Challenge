@@ -1,0 +1,2 @@
+img block 1-https://www.google.com/url?sa=i&url=https%3A%2F%2Fnintendo.fandom.com%2Fwiki%2FThwomp&psig=AOvVaw0Ha_nesICjez38HF27nHBG&ust=1739880914949000&source=images&cd=vfe&opi=89978449&ved=0CBcQjhxqFwoTCIChu93XyosDFQAAAAAdAAAAABAJ
+img block 2 -https://i.redd.it/9ptvp6kbjd5b1.png
