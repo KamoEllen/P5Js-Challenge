@@ -10,12 +10,16 @@ function preload()
 }
 function setup() {
     createCanvas(600, 600);
-    block1 = new Block(100,20);
-    block2 = new Block(200,150);
+    block1 = new Block(100,20,0);
+    block2 = new Block(200,150,-1);
 }
 function draw()
 {
     background(77,99,44);
     block1.show();
   block2.show();
+
+  block1.update();
+    block2.update();
+
 }
