@@ -1,3 +1,10 @@
+// Sorting the pixels based on the hue value of the image, where pixels are stored in an array. 
+// The pixels are rearranged according to their hue value (0–360). Selection sort is used to sort
+//  the pixels, where pixels with the highest hue values are moved to the beginning of the image.
+//  The pixels and selected pixels are swapped using a temporary variable. The index increments by 
+// 4 to process each pixel. The original and sorted versions of the image are side by side on the
+//  canvas.
+
 let img;
 let sorted;
 let index = 0;
