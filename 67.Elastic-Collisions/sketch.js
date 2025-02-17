@@ -10,6 +10,13 @@ function setup() {
 function draw() {
   background(255);
 
+  particleA.collide(particleB);
+
+  particleA.update();
+  particleB.update();
+
+  particleA.edges();
+  particleB.edges();
 
   particleA.show();
   particleB.show();
