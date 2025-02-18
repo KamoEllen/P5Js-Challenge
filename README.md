@@ -1,7 +1,7 @@
-# P5.js 200+ Projects Challenge
+# P5.js 100 Projects Challenge
 
 ### Goals:
-- Create 200+ P5.js projects
+- Create 100 P5.js projects
 - Explore creative coding
 - Document my journey using p5js
 
