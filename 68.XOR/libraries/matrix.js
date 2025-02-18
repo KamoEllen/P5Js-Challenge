@@ -1,3 +1,5 @@
+// https://github.com/CodingTrain/Toy-Neural-Network-JS
+
 class Matrix {
     constructor(rows, cols) {
       this.rows = rows;

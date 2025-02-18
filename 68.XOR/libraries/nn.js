@@ -1,3 +1,5 @@
+// https://github.com/CodingTrain/Toy-Neural-Network-JS
+
 class ActivationFunction {
     constructor(func, dfunc) {
       this.func = func;
