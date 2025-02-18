@@ -1,4 +1,5 @@
-var nn;
+let nn;
+let lr_slider;
 
 let training_data = [{
     inputs: [0, 0],
@@ -19,29 +20,37 @@ let training_data = [{
 ];
 
 function setup() {
-    createCanvas(640, 360);
-    nn = new NeuralNetwork(2,2,1);
-  }
-  
-  function draw() {
-    background(99,66,44); //brown
-
-for (var i = 0; i < 1000; i++)
-{
-     let data = random(training_data);
-    nn.train(data.inputs,data.outputs); //this input should produce that output
+  createCanvas(400, 400);
+  nn = new NeuralNetwork(2, 4, 1);
+  lr_slider = createSlider(0.01, 0.5, 0.1, 0.01);
 
 }
-   
-let resolution = 10;
+
+function draw() {
+  background(0);
+
+  for (let i = 0; i < 100; i++) {
+    let data = random(training_data);
+    nn.train(data.inputs, data.outputs);
+  }
+
+  nn.setLearningRate(lr_slider.value());
+
+  let resolution = 10;
   let cols = width / resolution;
   let rows = height / resolution;
   for (let i = 0; i < cols; i++) {
-    for (let j = 0; j < rows; j++) 
-    {
-        fill(random(255));
-        rect(i * resolution , j * resolution, resolution);
+    for (let j = 0; j < rows; j++) {
+      let x1 = i / cols;
+      let x2 = j / rows;
+      let inputs = [x1, x2];
+      let y = nn.predict(inputs);
+      noStroke();
+      fill(y * 255);
+      rect(i * resolution, j * resolution, resolution, resolution);
     }
-}
-
   }
+
+
+
+}
