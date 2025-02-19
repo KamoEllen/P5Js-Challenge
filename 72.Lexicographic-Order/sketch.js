@@ -5,7 +5,6 @@ function setup() {
 }
 
 function draw() {
-    background(200, 234,200); 
   console.log(vals);
 
   // STEP 1
@@ -36,7 +35,7 @@ function draw() {
   endArray.reverse();
   vals = vals.concat(endArray);
 
-//   background(0);
+  background(200, 234,200); 
   textSize(64);
   var s = '';
   for (var i = 0; i < vals.length; i++) {
