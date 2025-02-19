@@ -23,6 +23,26 @@ function setup() {
   }
 }
 
+function newCircle() {
+    let x = random(0, img.width);
+    let y = random(0, img.height);
+  
+    let valid = true;
+    for (let i = 0; i < circles.length; i++) {
+      let circle = circles[i];
+      let d = dist(x, y, circle.x, circle.y);
+      if (d < circle.r) {
+        valid = false;
+        break;
+      }
+    }
+    if (valid) {
+      return new Circle(x, y);
+    } else {
+      return null;
+    }
+  }
+  
 function draw() {
   background(0);
   let total = 5;
