@@ -1,5 +1,5 @@
-var cities = [];
-var totalCities = 5;
+var recordDistance;
+var bestEver;
 
 function setup() {
   createCanvas(400, 300);
@@ -7,12 +7,17 @@ function setup() {
     var v = createVector(random(width), random(height));
     cities[i] = v;
   }
+
+  var d = calcDistance(cities);
+  recordDistance = d;
+  bestEver = cities.slice();
 }
 
-function draw() {
-  background(188, 199, 234); // soft blue
-  fill(255);
-  for (var i = 0; i < cities.length; i++) {
-    ellipse(cities[i].x, cities[i].y, 8, 8);
+function calcDistance(points) {
+  var sum = 0;
+  for (var i = 0; i < points.length - 1; i++) {
+    var d = dist(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);
+    sum += d;
   }
+  return sum;
 }
