@@ -22,4 +22,20 @@ function draw() {
       vertex(bestEver[i].x, bestEver[i].y);
     }
     endShape();
+
+    var i = floor(random(cities.length));
+    var j = floor(random(cities.length));
+    swap(cities, i, j);
+  
+    var d = calcDistance(cities);
+    if (d < recordDistance) {
+      recordDistance = d;
+      bestEver = cities.slice();
+    }
+  }
+  
+  function swap(a, i, j) {
+    var temp = a[i];
+    a[i] = a[j];
+    a[j] = temp;
   }
