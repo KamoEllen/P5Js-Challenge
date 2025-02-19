@@ -10,8 +10,19 @@ function calculateFitness() {
         currentRecord = d;
         currentBest = population[i];
       }
-      fitness[i] = 1 / (pow(d, 8) + 1);  // Inverse distance for fitness
+      fitness[i] = 1 / (pow(d, 8) + 1); 
     }
+  }
+  function nextGeneration() {
+    const newPopulation = [];
+    for (let i = 0; i < population.length; i++) {
+      const orderA = pickOne(population, fitness);
+      const orderB = pickOne(population, fitness);
+      const order = crossOver(orderA, orderB);
+      mutate(order, 0.01);
+      newPopulation[i] = order;  
+        }
+    population = newPopulation;
   }
   
   function normalizeFitness() {
@@ -20,7 +31,7 @@ function calculateFitness() {
       sum += fitness[i];
     }
     for (let i = 0; i < fitness.length; i++) {
-      fitness[i] = fitness[i] / sum;  // Normalize fitness values to sum to 1
+      fitness[i] = fitness[i] / sum;  
     }
   }
   
