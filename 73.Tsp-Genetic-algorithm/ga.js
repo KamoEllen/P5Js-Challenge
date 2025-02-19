@@ -36,6 +36,28 @@ function calculateFitness() {
     index--;
     return list[index].slice();  
   }
+  function crossOver(orderA, orderB) {
+    const start = floor(random(orderA.length));
+    const end = floor(random(start + 1, orderA.length));
+    const neworder = orderA.slice(start, end);  
+        for (let i = 0; i < orderB.length; i++) {
+      const city = orderB[i];
+      if (!neworder.includes(city)) {
+        neworder.push(city);  
+          }
+    }
+    return neworder;
+  }
+  
+  function mutate(order, mutationRate) {
+    for (let i = 0; i < totalCities; i++) {
+      if (random(1) < mutationRate) {
+        const indexA = floor(random(order.length));
+        const indexB = (indexA + 1) % totalCities;
+        swap(order, indexA, indexB); 
+      }
+    }
+  }
   
   
   function normalizeFitness() {
