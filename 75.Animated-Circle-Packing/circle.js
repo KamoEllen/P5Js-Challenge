@@ -1,4 +1,3 @@
-
 class Circle {
     constructor(x, y) {
       this.x = x;
@@ -25,7 +24,6 @@ class Circle {
         this.x - this.r <= 0 ||
         this.y + this.r >= height ||
         this.y - this.r <= 0
-      )
+      );
     }
   }
-  

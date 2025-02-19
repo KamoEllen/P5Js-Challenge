@@ -3,7 +3,7 @@ let spots;
 let img;
 
 function preload() {
-img = loadImage("year.png");
+  img = loadImage("dolphin.webp");
 }
 
 function setup() {
@@ -25,7 +25,6 @@ function setup() {
 
 function draw() {
   background(0);
-
   let total = 5;
   let count = 0;
   let attempts = 0;
@@ -46,7 +45,6 @@ function draw() {
 
   for (let i = 0; i < circles.length; i++) {
     let circl = circles[i];
-
     if (circl.growing) {
       if (circl.edges()) {
         circl.growing = false;
@@ -56,7 +54,6 @@ function draw() {
           if (circl !== other) {
             var d = dist(circl.x, circl.y, other.x, other.y);
             var distance = circl.r + other.r;
-
             if (d - 4 < distance) {
               circl.growing = false;
               break;
@@ -65,7 +62,6 @@ function draw() {
         }
       }
     }
-
     circl.show();
     circl.grow();
   }
