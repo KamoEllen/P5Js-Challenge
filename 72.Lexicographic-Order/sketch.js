@@ -7,7 +7,6 @@ function setup() {
 function draw() {
   console.log(vals);
 
-  // STEP 1
   var largestI = -1;
   for (var i = 0; i < vals.length - 1; i++) {
     if (vals[i] < vals[i + 1]) {
@@ -15,11 +14,10 @@ function draw() {
     }
   }
   if (largestI == -1) {
-    noLoop();
+    noLoop(); 
     console.log('finished');
   }
 
-  // STEP 2
   var largestJ = -1;
   for (var j = 0; j < vals.length; j++) {
     if (vals[largestI] < vals[j]) {
@@ -27,10 +25,8 @@ function draw() {
     }
   }
 
-  // STEP 3
   swap(vals, largestI, largestJ);
 
-  // STEP 4
   var endArray = vals.splice(largestI + 1);
   endArray.reverse();
   vals = vals.concat(endArray);
@@ -41,7 +37,7 @@ function draw() {
   for (var i = 0; i < vals.length; i++) {
     s += vals[i];
   }
-  fill(0);
+  fill(23,88,44);
   text(s, 20, height / 2);
 }
 
