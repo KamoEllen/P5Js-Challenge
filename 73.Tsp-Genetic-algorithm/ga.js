@@ -24,6 +24,19 @@ function calculateFitness() {
         }
     population = newPopulation;
   }
+
+  function pickOne(list, prob) {
+    let index = 0;
+    let r = random(1);
+  
+    while (r > 0) {
+      r = r - prob[index];
+      index++;
+    }
+    index--;
+    return list[index].slice();  
+  }
+  
   
   function normalizeFitness() {
     let sum = 0;
