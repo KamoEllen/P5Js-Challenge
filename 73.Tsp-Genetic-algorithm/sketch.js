@@ -25,6 +25,19 @@ function setup() {
   statusP = createP('').style('font-size', '32pt');
 }
 
+function calcDistance(points, order) {
+    let sum = 0;
+    for (let i = 0; i < order.length - 1; i++) {
+      const cityAIndex = order[i];
+      const cityA = points[cityAIndex];
+      const cityBIndex = order[i + 1];
+      const cityB = points[cityBIndex];
+      const d = dist(cityA.x, cityA.y, cityB.x, cityB.y);  // Distance between cities
+      sum += d;
+    }
+    return sum;
+  }
+
 function draw() {
     background(0,44,7);
   
