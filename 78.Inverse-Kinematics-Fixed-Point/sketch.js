@@ -1,7 +1,10 @@
 let tentacle;
-  
+let robotarm;
+
 function setup() {
   createCanvas(600, 400);
+  robotarm = new RobotArm(width / 2, height, numSegs, segLen, 0);
+
 
   let point = new p5.Vector(300, 200);
   let current = new Segment(point, 10, 0);
@@ -15,6 +18,7 @@ function setup() {
 
 function draw() {
   background(141, 100, 22);
+  robotarm.show();
 
   tentacle.follow(mouseX, mouseY); // Follow mouse
   tentacle.update();
