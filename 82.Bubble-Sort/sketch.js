@@ -2,7 +2,7 @@ let values = [];
 
 let i = 0;
 let j = 0;
-
+ 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   values = new Array(width);
