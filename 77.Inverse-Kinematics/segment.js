@@ -1,5 +1,5 @@
-
-class Segment {    constructor(point, len, i) {
+class Segment {
+    constructor(point, len, i) {
       if (point.hasOwnProperty("angle")) {
         this.par = point;
         this.a = this.par.b.copy();
@@ -10,6 +10,7 @@ class Segment {    constructor(point, len, i) {
   
       this.b = new p5.Vector();
       this.angle = 0;
+      this.sw = map(i, 0, 20, 1, 10); 
       this.len = len;
       this.calculateB();
     }
@@ -41,7 +42,7 @@ class Segment {    constructor(point, len, i) {
   
     show() {
       stroke(255);
-      strokeWeight(1);
+      strokeWeight(this.sw); 
       line(this.a.x, this.a.y, this.b.x, this.b.y);
     }
   }

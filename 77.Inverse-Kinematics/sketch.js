@@ -16,7 +16,7 @@
   function draw() {
     background(141, 100, 22);
   
-    tentacle.follow();
+    tentacle.follow(mouseX, mouseY); // Follow mouse
     tentacle.update();
     tentacle.show();
   
