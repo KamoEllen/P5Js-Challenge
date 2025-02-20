@@ -1,5 +1,8 @@
 let values = [];
 
+let i = 0;
+let j = 0;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   values = new Array(width);
@@ -13,13 +16,17 @@ function draw() {
     background(180,200, 120); //powder green
 //  values = sort(values);
 
+  if (i < values.length) {
      for (let j = 0; j < values.length - i - 1; j++) {
       let a = values[j];
       let b = values[j + 1];
       if (a > b) {
         swap(values, j, j + 1);
       }
-
+    }
+  } else {
+    console.log("done");
+    noLoop();
   }
   i++;
 
