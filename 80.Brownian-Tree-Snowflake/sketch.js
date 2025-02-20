@@ -1,7 +1,7 @@
 let current;
 function setup() {
     createCanvas(600, 400);
-    current = new Particle(height/2, 0);
+    current = new Particle(width/2,0);
   }
  
   
