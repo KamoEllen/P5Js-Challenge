@@ -51,4 +51,24 @@ function draw() {
   }
 
   index = index + 1;
+
+  if (index == points.length) {
+    if (nextVertex == leftMost) {
+      console.log('done');
+      noLoop();
+    } else {
+      hull.push(nextVertex);
+      currentVertex = nextVertex;
+      index = 0;
+      nextVertex = leftMost;
+    }
+  }
+
+  stroke(0, 255, 100);
+  fill(0, 0, 255, 50);
+  beginShape();
+  for (let p of hull) {
+    vertex(p.x, p.y);
+  }
+  endShape(CLOSE);
 }
