@@ -1,7 +1,29 @@
+
+let y = 250;
+let velocity = 0;
+let restLength = 200;
+let k = 0.01;
+
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(600, 400);
 }
 
 function draw() {
-    background(155, 100, 180);
+ background(155, 100, 180);
+  noStroke();
+  fill(45, 197, 244);
+  circle(300, y, 64);
+
+  let x = y - restLength;
+  let force = -k * x;
+
+
+  velocity += force;
+  y += velocity;
+
+  velocity *= 0.99;
 }
+
+
+     
+  
