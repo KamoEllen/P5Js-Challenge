@@ -33,3 +33,34 @@ let allOptions = [
     }
     grid[x][y] = true;
   }
+  function isValid(i, j) {
+    if (i < 0 || i >= cols || j < 0 || j >= rows) {
+      return false;
+    }
+    return !grid[i][j];
+  }
+  
+  function draw() {
+    stroke(255);
+    strokeWeight(spacing * 0.5);
+    point(x * spacing, y * spacing);
+  
+    let options = [];
+    for (let option of allOptions) {
+      let newX = x + option.dx;
+      let newY = y + option.dy;
+      if (isValid(newX, newY)) {
+        options.push(option);
+      }
+    }
+  
+    if (options.length > 0) {
+      let step = random(options);
+      x += step.dx;
+      y += step.dy;
+      grid[x][y] = true;
+    } else {
+      console.log(`I'm stuck!`);
+      noLoop();
+    }
+  }
