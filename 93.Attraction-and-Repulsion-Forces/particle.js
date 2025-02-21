@@ -21,4 +21,17 @@ class Particle {
       this.prev.x = this.pos.x;
       this.prev.y = this.pos.y;
     }
+  
+    attracted(target) {
+      let force = p5.Vector.sub(target, this.pos);
+      let d = force.mag();
+      d = constrain(d, 1, 25);
+      let G = 50;
+      let strength = G / (d * d);
+      force.setMag(strength);
+      if (d < 20) {
+        force.mult(-10);
+      }
+      this.acc.add(force);
+    }
   }
