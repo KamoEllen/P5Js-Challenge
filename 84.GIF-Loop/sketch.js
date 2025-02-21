@@ -1,5 +1,6 @@
 const totalFrames = 120;
 let counter = 0;
+const record = false;
 
 function setup() {
   createCanvas(400, 400);
@@ -7,24 +8,25 @@ function setup() {
 
 function draw() {
   let percent = 0;
-
+  if (record) {
     percent = float(counter) / totalFrames;
-
+  } else {
+    percent = float(counter % totalFrames) / totalFrames;
+  }
   render(percent);
-
+  if (record) {
     save("output/gif-" + nf(counter, 3) + ".png");
     if (counter == totalFrames - 1) {
       noLoop();
     }
-
+  }
   counter++;
 }
 
 function render(percent) {
   let angle = map(percent, 0, 1, 0, TWO_PI);
   background(100,155,180)
-
-  ellipse(percent * width , height/2, 20,20);
+  translate(width / 2, height / 2);
   rotate(angle);
   stroke(255);
   noFill();
