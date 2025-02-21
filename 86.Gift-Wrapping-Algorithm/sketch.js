@@ -1,13 +1,18 @@
+
+const points = [];
+const hull = [];
+
+let leftMost;
 let currentVertex;
-let nextVertex;
-let index = 1;
+let index;
 let nextIndex = -1;
+let nextVertex;
 
 function setup() {
   createCanvas(500, 500);
   let buffer = 20;
   for (let i = 0; i < 50; i++) {
-    points.push(createVector(random(width), random(height)));
+    points.push(createVector(random(buffer, width - buffer), random(buffer, height - buffer)));
   }
   points.sort((a, b) => a.x - b.x);
   leftMost = points[0];
@@ -18,7 +23,7 @@ function setup() {
 }
 
 function draw() {
-  background(100, 155, 180);
+    background(100, 155, 180);
 
   stroke(255);
   strokeWeight(8);
@@ -26,9 +31,18 @@ function draw() {
     point(p.x, p.y);
   }
 
+  stroke(0, 0, 255);
+  fill(0, 0, 255, 50);
+  beginShape();
+  for (let p of hull) {
+    vertex(p.x, p.y);
+  }
+  endShape(CLOSE);
+
   stroke(0, 255, 0);
   strokeWeight(32);
   point(leftMost.x, leftMost.y);
+
   stroke(200, 0, 255);
   strokeWeight(32);
   point(currentVertex.x, currentVertex.y);
@@ -51,7 +65,6 @@ function draw() {
   }
 
   index = index + 1;
-
   if (index == points.length) {
     if (nextVertex == leftMost) {
       console.log('done');
@@ -63,12 +76,4 @@ function draw() {
       nextVertex = leftMost;
     }
   }
-
-  stroke(0, 255, 100);
-  fill(0, 0, 255, 50);
-  beginShape();
-  for (let p of hull) {
-    vertex(p.x, p.y);
-  }
-  endShape(CLOSE);
 }
