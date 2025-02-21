@@ -1,5 +1,7 @@
 function setup() {
-    createCanvas(200,200);
+   noCanvas();
+   let button = select('#submitbutton');
+   let input = select('#wordinput');
 }
 function draw()
 {
