@@ -1,7 +1,6 @@
-const points = [];
-const hull = [];
-
-let leftMost;
+let currentVertex;
+let nextVertex;
+let index = 1;
 
 function setup() {
   createCanvas(500, 500);
@@ -11,7 +10,10 @@ function setup() {
   }
   points.sort((a, b) => a.x - b.x);
   leftMost = points[0];
-  hull.push(leftMost);
+  currentVertex = leftMost;
+  hull.push(currentVertex);
+  nextVertex = points[1];
+  index = 2;
 }
 
 function draw() {
@@ -26,4 +28,11 @@ function draw() {
   stroke(0, 255, 0);
   strokeWeight(32);
   point(leftMost.x, leftMost.y);
+  stroke(200, 0, 255);
+  strokeWeight(32);
+  point(currentVertex.x, currentVertex.y);
+
+  stroke(0, 255, 0);
+  strokeWeight(2);
+  line(currentVertex.x, currentVertex.y, nextVertex.x, nextVertex.y);
 }
