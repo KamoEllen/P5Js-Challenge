@@ -1,6 +1,7 @@
 let currentVertex;
 let nextVertex;
 let index = 1;
+let nextIndex = -1;
 
 function setup() {
   createCanvas(500, 500);
@@ -35,4 +36,19 @@ function draw() {
   stroke(0, 255, 0);
   strokeWeight(2);
   line(currentVertex.x, currentVertex.y, nextVertex.x, nextVertex.y);
+
+  let checking = points[index];
+  stroke(255);
+  line(currentVertex.x, currentVertex.y, checking.x, checking.y);
+
+  const a = p5.Vector.sub(nextVertex, currentVertex);
+  const b = p5.Vector.sub(checking, currentVertex);
+  const cross = a.cross(b);
+
+  if (cross.z < 0) {
+    nextVertex = checking;
+    nextIndex = index;
+  }
+
+  index = index + 1;
 }
