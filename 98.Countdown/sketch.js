@@ -1,4 +1,4 @@
-var counter=0;
+var counter=400;
 var timer;
 function setup() {
   // createCanvas(400, 400);
@@ -8,7 +8,7 @@ function setup() {
 
   function timeIt()
   {
-    counter++;
+    counter--;
     timer.html(counter);
   }
 
