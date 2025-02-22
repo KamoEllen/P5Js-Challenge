@@ -1,21 +1,25 @@
 class Cell
 {
-    constructor()
+    constructor(x0, y0, r, angle)
     {
-        this.r = 100;// radius
-        this. angle = 0;
+        this.r = r;
+        this. angle = angle; //different stating angles causes wave shape
+        this.x0 = x0;
+        this.y0 = y0;
     }
 
     update()
     {
         this.x = this.r*cos(this.angle);
         this.y = this.r*sin(this.angle);
+        this.angle += 0.05; //circle moves
     }
 
     show()
     {
-        fill(0);
-        ellipse(this.x, this.y, 5, 5);
+        fill(55);
+        stroke(200,0,10);
+        ellipse(this.x0+this.x, this.y0+this.y, 5, 5);
     }
 
 }
