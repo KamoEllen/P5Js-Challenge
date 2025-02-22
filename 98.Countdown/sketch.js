@@ -1,5 +1,5 @@
 var counter=0;
-var timeLeft =60;
+var timeLeft =20;
 var timer;
 function setup() {
   // createCanvas(400, 400);
