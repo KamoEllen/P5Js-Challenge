@@ -1,5 +1,6 @@
 class Toothpick {
   constructor(x, y, d) {
+    this.newPick = true;
     this.dir = d;
     if (this.dir == 1) {
       this.ax = x - len / 2;
@@ -14,9 +15,12 @@ class Toothpick {
     }
   }
 
-  show() {
+  show(factor) {
     stroke(0);
-    strokeWeight(1);
+    if (this.newPick) {
+      stroke(0, 0, 255); 
+    }
+    strokeWeight(1 / factor);
     line(this.ax, this.ay, this.bx, this.by);
   }
 }
