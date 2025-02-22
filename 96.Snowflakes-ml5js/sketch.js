@@ -20,8 +20,11 @@ function draw() {
     background(29,  200.100);
 }
 
-function gotSketch(s) {
-
+function gotSketch(error, s) { //all ml5 functions need error handling
+  if (error) {
+    console.error(error);
+  } else {
     strokePath = s;
     console.log(strokePath);
+  }
 }
