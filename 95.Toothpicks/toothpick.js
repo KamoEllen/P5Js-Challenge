@@ -1,6 +1,8 @@
 class Toothpick {
+
   constructor(x, y, d) {
     this.newPick = true;
+
     this.dir = d;
     if (this.dir == 1) {
       this.ax = x - len / 2;
@@ -15,16 +17,20 @@ class Toothpick {
     }
   }
 
-  show(factor) {
-    stroke(0);
-    if (this.newPick) {
-      stroke(0, 0, 255); 
+
+  intersects(x,y) {
+    if (this.ax == x && this.ay == y) {
+      return true;
+    } else if (this.bx == x && this.by == y) {
+      return true;
+    } else {
+      return false;
     }
-    strokeWeight(1 / factor);
-    line(this.ax, this.ay, this.bx, this.by);
   }
 
-  createA(others) {
+
+
+   createA(others) {
     let available = true;
     for (let other of others) {
       if (other != this && other.intersects(this.ax, this.ay)) {
@@ -39,7 +45,7 @@ class Toothpick {
     }
   }
 
-  createB(others) {
+   createB(others) {
     let available = true;
     for (let other of others) {
       if (other != this && other.intersects(this.bx, this.by)) {
@@ -52,5 +58,14 @@ class Toothpick {
     } else {
       return null;
     }
+  }
+
+  show(factor) {
+    stroke(0);
+    if (this.newPick) {
+      stroke(0, 0, 255);
+    }
+    strokeWeight(1 / factor);
+    line(this.ax, this.ay, this.bx, this.by);
   }
 }
