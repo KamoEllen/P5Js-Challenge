@@ -19,6 +19,21 @@ function setup() {
       t.show(factor);
       minX = min(t.ax, minX);
       maxX = max(t.ax, maxX);
+      let next = [];
+      for (let t of picks) {
+        if (t.newPick) {
+          let nextA = t.createA(picks);
+          let nextB = t.createB(picks);
+          if (nextA != null) {
+            next.push(nextA);
+          }
+          if (nextB != null) {
+            next.push(nextB);
+          }
+          t.newPick = false;
+        }
+      }
+    
+      picks = picks.concat(next);
     }
-  }
-  
+  }    

@@ -23,4 +23,34 @@ class Toothpick {
     strokeWeight(1 / factor);
     line(this.ax, this.ay, this.bx, this.by);
   }
+
+  createA(others) {
+    let available = true;
+    for (let other of others) {
+      if (other != this && other.intersects(this.ax, this.ay)) {
+        available = false;
+        break;
+      }
+    }
+    if (available) {
+      return new Toothpick(this.ax, this.ay, this.dir * -1);
+    } else {
+      return null;
+    }
+  }
+
+  createB(others) {
+    let available = true;
+    for (let other of others) {
+      if (other != this && other.intersects(this.bx, this.by)) {
+        available = false;
+        break;
+      }
+    }
+    if (available) {
+      return new Toothpick(this.bx, this.by, this.dir * -1);
+    } else {
+      return null;
+    }
+  }
 }
