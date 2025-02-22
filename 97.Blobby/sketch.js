@@ -13,15 +13,15 @@ function draw() {
 
   beginShape();
   let xoff = 0;
-  for (var a = 0; a < TWO_PI; a += 0.1) {
+  for (var a = 0; a < TWO_PI; a += 0.05) { 
     let offset = map(noise(xoff, yoff), 0, 1, -25, 25);
     let r = radius + offset;
     let x = r * cos(a);
     let y = r * sin(a);
     vertex(x, y);
-    xoff += 0.1;
+    xoff += 0.15; 
   }
-  endShape();
+  endShape(CLOSE); 
 
-
+  yoff += 0.05;
 }
