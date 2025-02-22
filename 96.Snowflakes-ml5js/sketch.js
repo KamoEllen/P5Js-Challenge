@@ -1,4 +1,3 @@
-
 let model;
 let strokePath = null;
 
@@ -10,7 +9,8 @@ function setup() {
   x = random(-width / 2, width / 2);
   y = random(-height / 2, height / 2);
   model = ml5.sketchRNN("snowflake", modelReady);
-  background(29,  200,100);
+  background(29, 200, 100);
+  frameRate(60); // Increase frame rate for smoother drawing
 }
 
 function modelReady() {
@@ -21,28 +21,32 @@ function modelReady() {
 
 function draw() {
   translate(width / 2, height / 2);
+
   if (strokePath != null) {
-    let newX = x + strokePath.dx * 0.2;
-    let newY = y + strokePath.dy * 0.2;
+    let newX = x + strokePath.dx * 2; // Increase scaling factor for faster drawing
+    let newY = y + strokePath.dy * 2; // Increase scaling factor for faster drawing
+
     if (pen == "down") {
       stroke(255);
       strokeWeight(2);
       line(x, y, newX, newY);
     }
+
     pen = strokePath.pen;
-    strokePath = null;
     x = newX;
     y = newY;
 
     if (pen !== "end") {
-      model.generate(gotSketch);
+      model.generate(gotSketch); // Request the next stroke
     } else {
       console.log("drawing complete");
       model.reset();
-      model.generate(gotSketch);
+      model.generate(gotSketch); // Start a new drawing
       x = random(-width / 2, width / 2);
       y = random(-height / 2, height / 2);
     }
+
+    strokePath = null; // Reset strokePath after processing
   }
 }
 
@@ -50,7 +54,6 @@ function gotSketch(error, s) {
   if (error) {
     console.error(error);
   } else {
-    strokePath = s;
-   
+    strokePath = s; // Store the new stroke
   }
 }
