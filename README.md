@@ -92,7 +92,30 @@ Here’s a list of all the projects I’ve completed so far, sorted by project n
 | [74. Barnsley-Fern](74.Barnsley-Fern) |
 | [75. Animated-Circle-Packing](75.Animated-Circle-Packing) |
 | [76. Inverse-Kinematics](76.Inverse-Kinematics) |
-
+| [77.Inverse-Kinematics](77.Inverse-Kinematics) |
+| [78.Inverse-Kinematics-Fixed-Point](78.Inverse-Kinematics-Fixed-Point) |
+| [79.Fourier-Series](79.Fourier-Series) |
+| [80.Brownian-Tree-Snowflake](80.Brownian-Tree-Snowflake) |
+| [81.Koch-Fractal-Snowflake](81.Koch-Fractal-Snowflake) |
+| [82.Bubble-Sort](82.Bubble-Sort) |
+| [83.Self-Avoiding-Walk](83.Self-Avoiding-Walk) |
+| [84.GIF-Loop](84.GIF-Loop) |
+| [85.Polar-Perlin-Noise-Loops](85.Polar-Perlin-Noise-Loops) |
+| [86.Gift-Wrapping-Algorithm](86.Gift-Wrapping-Algorithm) |
+| [87.Pendulum](87.Pendulum) |
+| [88.Spring-Forces](88.Spring-Forces) |
+| [89.Spring-Vector](89.Spring-Vector) |
+| [90.Buffons-Needle](90.Buffons-Needle) |
+| [91.Horizontal-Directional-Drilling](91.Horizontal-Directional-Drilling) |
+| [92.Mad-Libs-Generator](92.Mad-Libs-Generator) |
+| [93.Attraction-and-Repulsion-Forces](93.Attraction-and-Repulsion-Forces) |
+| [94.Acrostic](94.Acrostic) |
+| [95.Toothpicks](95.Toothpicks) |
+| [96.Snowflakes-ml5js](96.Snowflakes-ml5js) |
+| [97.Blobby](97.Blobby) |
+| [98.Countdown](98.Countdown) |
+| [99.Wave](99.Wave) |
+| [100.Möbius-Strip](100.Möbius-Strip) |
 ---
 
 ## About P5.js
